@@ -2,23 +2,19 @@
 //  AppDelegate.swift
 //  HolaClient
 //
-//  Created by Philip Shen on 10/22/19.
+//  Created by Phil Shen on 10/22/19.
 //  Copyright © 2019 Philip Shen. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
-@NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func applicationDidFinishLaunching(_ aNotification: Notification) {
-        
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        return true
     }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        
-    }
-
 
 }
 

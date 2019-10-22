@@ -2,9 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "container:HolaServer/HolaServer.xcodeproj">
+      location = "group:HolaClient/HolaClient.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:HolaClient/HolaClient.xcodeproj">
+      location = "container:HolaServer/HolaServer.xcodeproj">
    </FileRef>
 </Workspace>
