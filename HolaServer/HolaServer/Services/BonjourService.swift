@@ -16,9 +16,9 @@ class BonjourService: NSObject {
     
     // Dependencies
     private let service: NetService
-    private let logService: LogService
+    private let logService: LogService?
     
-    init(service: NetService, logService: LogService) {
+    init(service: NetService, logService: LogService?) {
         self.service = service
         self.logService = logService
         super.init()
@@ -26,8 +26,9 @@ class BonjourService: NSObject {
         service.delegate = self
     }
     
-    convenience init(name: String, logService: LogService) {
-        let service = NetService(domain: "local.", type: "_myservice._tcp.", name: name)
+    convenience init(name: String? = nil, logService: LogService? = nil) {
+        let name = name ?? "hola"
+        let service = NetService(domain: "local.", type: "_http._tcp.", name: name)
         self.init(service: service, logService: logService)
     }
     
@@ -54,11 +55,11 @@ extension BonjourService: NetServiceDelegate {
     func netService(_ sender: NetService, didNotPublish errorDict: [String : NSNumber]) {
         let domain = errorDict["NSNetServicesErrorDomain"]!
         let errorCode = errorDict["NSNetServicesErrorCode"]!
-        logService.log(.error(.publishing, "Failed with domain: \(domain) and error code: \(errorCode)"))
+        logService?.log(.error(.publishing, "Failed with domain: \(domain) and error code: \(errorCode)"))
     }
     
     func netServiceDidPublish(_ sender: NetService) {
-        logService.log(.success(.publishing, "Published Bonjour service \"\(sender.name)\" to \(sender.domain):\(sender.port)"))
+        logService?.log(.success(.publishing, "Published Bonjour service \"\(sender.name)\" to \(sender.domain):\(sender.port)"))
     }
     
 }

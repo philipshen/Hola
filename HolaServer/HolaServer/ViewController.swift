@@ -17,9 +17,8 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         textView.isEditable = false
         
-        let name = "BonjourPlayground: \(Host.current().localizedName!)"
         let logService = LogService(delegate: self)
-        let service = BonjourService(name: name, logService: logService)
+        let service = BonjourService(logService: logService)
         service.publish()
     }
 
