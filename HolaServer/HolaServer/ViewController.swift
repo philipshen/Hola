@@ -18,8 +18,12 @@ class ViewController: NSViewController {
         textView.isEditable = false
         
         let logService = LogService(delegate: self)
-        let service = BonjourService(logService: logService)
+        let service = BonjourServer(logService: logService)
         service.publish()
+        
+        let alert = NSAlert()
+        alert.messageText = "Testing"
+        alert.runModal()
     }
 
 }

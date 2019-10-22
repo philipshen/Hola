@@ -13,6 +13,8 @@ struct Log {
     enum Domain {
         case initialization
         case publishing
+        case connecting
+        case streaming
         
         var displayName: String {
             switch self {
@@ -20,6 +22,10 @@ struct Log {
                 return "Init"
             case .publishing:
                 return "Publish"
+            case .connecting:
+                return "Connect"
+            case .streaming:
+                return "Stream"
             }
         }
     }

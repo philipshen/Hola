@@ -14,6 +14,7 @@
 		CD3B2DC2235F795200E16BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DC0235F795200E16BF2 /* LaunchScreen.storyboard */; };
 		CD3B2DDA235F797200E16BF2 /* HolaClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B2DD8235F797200E16BF2 /* HolaClientTests.swift */; };
 		CD3B2DDB235F797200E16BF2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DD9235F797200E16BF2 /* Info.plist */; };
+		CD438A99235F9E9A009F3A33 /* BonjourClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438A98235F9E9A009F3A33 /* BonjourClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		CD3B2DC8235F795200E16BF2 /* HolaClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolaClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3B2DD8235F797200E16BF2 /* HolaClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolaClientTests.swift; sourceTree = "<group>"; };
 		CD3B2DD9235F797200E16BF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD438A98235F9E9A009F3A33 /* BonjourClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 		CD3B2DB4235F795000E16BF2 /* HolaClient */ = {
 			isa = PBXGroup;
 			children = (
+				CD438A9A235F9E9E009F3A33 /* Services */,
 				CD3B2DDC235F79B000E16BF2 /* Supporting */,
 				CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */,
 				CD3B2DB9235F795000E16BF2 /* ViewController.swift */,
@@ -105,6 +108,14 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
+		CD438A9A235F9E9E009F3A33 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CD438A98235F9E9A009F3A33 /* BonjourClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -115,6 +126,7 @@
 				CD3B2DAE235F795000E16BF2 /* Sources */,
 				CD3B2DAF235F795000E16BF2 /* Frameworks */,
 				CD3B2DB0235F795000E16BF2 /* Resources */,
+				CD3B2DDD235F7A8000E16BF2 /* Begin HolaServer */,
 			);
 			buildRules = (
 			);
@@ -202,12 +214,34 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CD3B2DDD235F7A8000E16BF2 /* Begin HolaServer */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Begin HolaServer";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcodebuild -scheme HolaServer -project ../HolaServer/HolaServer.xcodeproj/ -configuration ${CONFIGURATION}\nopen ~/Library/Developer/Xcode/DerivedData/HolaServer-*/Build/Products/${CONFIGURATION}/HolaServer.app\n\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CD3B2DAE235F795000E16BF2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CD3B2DBA235F795000E16BF2 /* ViewController.swift in Sources */,
+				CD438A99235F9E9A009F3A33 /* BonjourClient.swift in Sources */,
 				CD3B2DB6235F795000E16BF2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

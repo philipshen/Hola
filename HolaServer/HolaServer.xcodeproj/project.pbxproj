@@ -11,7 +11,7 @@
 		648F1E28235E9C4C00AC77E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E27235E9C4C00AC77E9 /* ViewController.swift */; };
 		648F1E2A235E9C4C00AC77E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648F1E29235E9C4C00AC77E9 /* Assets.xcassets */; };
 		648F1E2D235E9C4C00AC77E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 648F1E2B235E9C4C00AC77E9 /* Main.storyboard */; };
-		648F1E45235E9F6900AC77E9 /* BonjourService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E44235E9F6900AC77E9 /* BonjourService.swift */; };
+		648F1E45235E9F6900AC77E9 /* BonjourServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E44235E9F6900AC77E9 /* BonjourServer.swift */; };
 		648F1E47235EA09600AC77E9 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E46235EA09600AC77E9 /* LogService.swift */; };
 		648F1E49235EA0C100AC77E9 /* LogServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E48235EA0C100AC77E9 /* LogServiceDelegate.swift */; };
 		648F1E50235EA8A100AC77E9 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E4F235EA8A100AC77E9 /* Log.swift */; };
@@ -37,7 +37,7 @@
 		648F1E2F235E9C4C00AC77E9 /* HolaServer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HolaServer.entitlements; sourceTree = "<group>"; };
 		648F1E34235E9C4D00AC77E9 /* HolaServerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolaServerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		648F1E3A235E9C4D00AC77E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		648F1E44235E9F6900AC77E9 /* BonjourService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourService.swift; sourceTree = "<group>"; };
+		648F1E44235E9F6900AC77E9 /* BonjourServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourServer.swift; sourceTree = "<group>"; };
 		648F1E46235EA09600AC77E9 /* LogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogService.swift; sourceTree = "<group>"; };
 		648F1E48235EA0C100AC77E9 /* LogServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogServiceDelegate.swift; sourceTree = "<group>"; };
 		648F1E4F235EA8A100AC77E9 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 		648F1E4C235EA88C00AC77E9 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				648F1E44235E9F6900AC77E9 /* BonjourService.swift */,
+				648F1E44235E9F6900AC77E9 /* BonjourServer.swift */,
 				648F1E46235EA09600AC77E9 /* LogService.swift */,
 			);
 			path = Services;
@@ -238,7 +238,7 @@
 			files = (
 				648F1E28235E9C4C00AC77E9 /* ViewController.swift in Sources */,
 				648F1E49235EA0C100AC77E9 /* LogServiceDelegate.swift in Sources */,
-				648F1E45235E9F6900AC77E9 /* BonjourService.swift in Sources */,
+				648F1E45235E9F6900AC77E9 /* BonjourServer.swift in Sources */,
 				648F1E47235EA09600AC77E9 /* LogService.swift in Sources */,
 				648F1E50235EA8A100AC77E9 /* Log.swift in Sources */,
 				648F1E26235E9C4C00AC77E9 /* AppDelegate.swift in Sources */,
