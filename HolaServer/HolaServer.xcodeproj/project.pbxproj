@@ -15,6 +15,8 @@
 		648F1E47235EA09600AC77E9 /* LogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E46235EA09600AC77E9 /* LogService.swift */; };
 		648F1E49235EA0C100AC77E9 /* LogServiceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E48235EA0C100AC77E9 /* LogServiceDelegate.swift */; };
 		648F1E50235EA8A100AC77E9 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E4F235EA8A100AC77E9 /* Log.swift */; };
+		CD438AA32360F6B3009F3A33 /* NSData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438AA22360F6B3009F3A33 /* NSData+Utils.swift */; };
+		CD438AA52360F6C5009F3A33 /* NetService+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438AA42360F6C5009F3A33 /* NetService+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,8 @@
 		648F1E46235EA09600AC77E9 /* LogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogService.swift; sourceTree = "<group>"; };
 		648F1E48235EA0C100AC77E9 /* LogServiceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogServiceDelegate.swift; sourceTree = "<group>"; };
 		648F1E4F235EA8A100AC77E9 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		CD438AA22360F6B3009F3A33 /* NSData+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+Utils.swift"; path = "../../../HolaClient/HolaClient/Extensions/NSData+Utils.swift"; sourceTree = "<group>"; };
+		CD438AA42360F6C5009F3A33 /* NetService+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NetService+Utils.swift"; path = "../../../HolaClient/HolaClient/Extensions/NetService+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,7 @@
 		648F1E24235E9C4C00AC77E9 /* HolaServer */ = {
 			isa = PBXGroup;
 			children = (
+				CD438AA12360F6A1009F3A33 /* Extensions */,
 				648F1E43235E9F5800AC77E9 /* Models */,
 				648F1E52235EAD7D00AC77E9 /* Protocols */,
 				648F1E4C235EA88C00AC77E9 /* Services */,
@@ -134,6 +139,15 @@
 				648F1E2F235E9C4C00AC77E9 /* HolaServer.entitlements */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		CD438AA12360F6A1009F3A33 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				CD438AA22360F6B3009F3A33 /* NSData+Utils.swift */,
+				CD438AA42360F6C5009F3A33 /* NetService+Utils.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,10 +250,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD438AA32360F6B3009F3A33 /* NSData+Utils.swift in Sources */,
 				648F1E28235E9C4C00AC77E9 /* ViewController.swift in Sources */,
 				648F1E49235EA0C100AC77E9 /* LogServiceDelegate.swift in Sources */,
 				648F1E45235E9F6900AC77E9 /* Server.swift in Sources */,
 				648F1E47235EA09600AC77E9 /* LogService.swift in Sources */,
+				CD438AA52360F6C5009F3A33 /* NetService+Utils.swift in Sources */,
 				648F1E50235EA8A100AC77E9 /* Log.swift in Sources */,
 				648F1E26235E9C4C00AC77E9 /* AppDelegate.swift in Sources */,
 			);

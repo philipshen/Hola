@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import HolaClient
 
 class ViewController: NSViewController {
 

@@ -10,10 +10,6 @@ import Foundation
 
 class Server: NSObject {
     
-    private var inputStream: InputStream?
-    private var outputStream: OutputStream?
-    private var openedStreams = 0
-    
     // Dependencies
     private let service: NetService
     private let logService: LogService?
@@ -34,7 +30,6 @@ class Server: NSObject {
     
     func publish() {
         log(.default(.publishing, "Publishing Hola service \"\(service.name)\""))
-//        service.resolve(withTimeout: 10)
         service.publish(options: .listenForConnections)
     }
     
@@ -42,22 +37,8 @@ class Server: NSObject {
 
 extension Server: NetServiceDelegate {
     
-    func netService(_ sender: NetService, didAcceptConnectionWith inputStream: InputStream, outputStream: OutputStream) {
-        if let inputStream = self.inputStream {
-            inputStream.open()
-            inputStream.close()
-            outputStream.open()
-            outputStream.close()
-            log(.error(.connecting, "Unable to connect to \(sender.name): connection already open."))
-        } else {
-            self.inputStream = open(stream: inputStream)
-            self.outputStream = open(stream: outputStream)
-            log(.success(.connecting, "Connection to \(service.name) accepted"))
-        }
-    }
-    
     func netService(_ sender: NetService, didNotPublish errorDict: [String:NSNumber]) {
-        log(.error(.publishing, getErrorMessage(errorDict)))
+        log(.error(.publishing, "Failed to publish service: \(getErrorMessage(errorDict))"))
     }
     
     func netServiceDidPublish(_ sender: NetService) {
@@ -74,19 +55,9 @@ extension Server: NetServiceDelegate {
 extension Server: StreamDelegate {
     
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
-        if eventCode.contains(.openCompleted) {
-            openedStreams += 1
-            
-            // Once we have both streams open, stop the service
-            if openedStreams == 2 {
-                log(.success(.connecting, "Successfully opened input and output streams"))
-                service.stop()
-            }
-        }
-        
         if eventCode.contains(.hasBytesAvailable) {
-            guard let inputStream = inputStream else {
-                log(.error(.streaming, "Handling input stream, however no input stream set"))
+            guard let inputStream = aStream as? InputStream else {
+                log(.error(.streaming, "Error reading stream: stream must be of type InputStream"))
                 return
             }
             
@@ -115,17 +86,6 @@ extension Server: StreamDelegate {
 
 // MARK: - Private Utility Methods
 private extension Server {
-    
-    /**
-     Opens a stream and sets its delegate to self, then returns it.
-     */
-    func open<T: Stream>(stream: T?) -> T? {
-        guard let stream = stream else { return nil }
-        stream.delegate = self
-        stream.schedule(in: .current, forMode: .default)
-        stream.open()
-        return stream
-    }
     
     func log(_ log: Log) {
         logService?.log(log)

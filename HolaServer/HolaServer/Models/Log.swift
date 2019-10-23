@@ -13,7 +13,7 @@ struct Log {
     enum Domain {
         case initialization
         case publishing
-        case connecting
+        case resolving
         case streaming
         case service
         
@@ -23,8 +23,8 @@ struct Log {
                 return "Init"
             case .publishing:
                 return "Publish"
-            case .connecting:
-                return "Connect"
+            case .resolving:
+                return "Resolve"
             case .streaming:
                 return "Stream"
             case .service:
