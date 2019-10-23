@@ -174,4 +174,14 @@ private extension Client {
         return stream
     }
     
+    /**
+     Returns the IPv4 address, or IPv6 if it's present
+     */
+    func getAddress(data: [Data]) -> String {
+        // Get both IPv4 and IPv6
+        for case let addressData as NSData in data {
+            
+        }
+    }
+    
 }
