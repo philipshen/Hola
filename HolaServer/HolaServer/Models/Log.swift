@@ -15,6 +15,7 @@ struct Log {
         case publishing
         case connecting
         case streaming
+        case service
         
         var displayName: String {
             switch self {
@@ -26,6 +27,8 @@ struct Log {
                 return "Connect"
             case .streaming:
                 return "Stream"
+            case .service:
+                return "Service"
             }
         }
     }

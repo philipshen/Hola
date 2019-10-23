@@ -13,13 +13,13 @@ class ViewController: NSViewController {
     
     @IBOutlet var textView: NSTextView!
     
+    lazy var logService = LogService(delegate: self)
+    lazy var server = BonjourServer(logService: logService)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         textView.isEditable = false
-        
-        let logService = LogService(delegate: self)
-        let service = BonjourServer(logService: logService)
-        service.publish()
+        server.publish()
     }
 
 }

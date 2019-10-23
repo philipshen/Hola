@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import os.log
 
 class BonjourServer: NSObject {
     
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
-    private var areStreamsOpen = false
+    private var openedStreams = 0
     
     // Dependencies
     private let service: NetService
@@ -28,12 +27,13 @@ class BonjourServer: NSObject {
     }
     
     convenience init(name: String? = nil, logService: LogService? = nil) {
-        let name = name ?? "hola"
-        let service = NetService(domain: "local.", type: "_https._tcp.", name: name)
+        let name = name ?? "hola_\(Int.random(in: 1000..<9999))"
+        let service = NetService(domain: "local.", type: "_https._tcp.", name: name, port: 0)
         self.init(service: service, logService: logService)
     }
     
     func publish() {
+        log(.default(.publishing, "Publishing Hola service \"\(service.name)\""))
         service.publish(options: .listenForConnections)
     }
     
@@ -42,29 +42,34 @@ class BonjourServer: NSObject {
 extension BonjourServer: NetServiceDelegate {
     
     func netService(_ sender: NetService, didAcceptConnectionWith inputStream: InputStream, outputStream: OutputStream) {
-        OperationQueue.main.addOperation { [weak self] in
-            if let inputStream = self?.inputStream {
-                inputStream.open()
-                inputStream.close()
-                outputStream.open()
-                outputStream.close()
-                self?.logService?.log(.default(.connecting, "Accepted connection from \"\(sender.name)\", however another connection was already open."))
-            } else {
-                self?.service.stop()
-                self?.inputStream = self?.open(stream: inputStream)
-                self?.outputStream = self?.open(stream: outputStream)
-            }
+        if let inputStream = self.inputStream {
+            inputStream.open()
+            inputStream.close()
+            outputStream.open()
+            outputStream.close()
+            log(.error(.connecting, "Unable to connect to \(sender.name): connection already open."))
+        } else {
+            service.stop()
+            self.inputStream = open(stream: inputStream)
+            self.outputStream = open(stream: outputStream)
+            log(.success(.connecting, "Connection to \(service.name) accepted"))
         }
     }
     
-    func netService(_ sender: NetService, didNotPublish errorDict: [String : NSNumber]) {
-        let domain = errorDict["NSNetServicesErrorDomain"]!
-        let errorCode = errorDict["NSNetServicesErrorCode"]!
-        logService?.log(.error(.publishing, "Failed with domain: \(domain) and error code: \(errorCode)"))
+    func netService(_ sender: NetService, didNotPublish errorDict: [String:NSNumber]) {
+        log(.error(.publishing, getErrorMessage(errorDict)))
     }
     
     func netServiceDidPublish(_ sender: NetService) {
-        logService?.log(.success(.publishing, "Published Bonjour service \"\(sender.name)\" to \(sender.domain):\(sender.port)"))
+        log(.success(.publishing, "Published Bonjour service \"\(sender.name)\" to \(sender.domain):\(sender.port)"))
+    }
+    
+    func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
+        log(.error(.service, getErrorMessage(errorDict)))
+    }
+    
+    func netServiceDidStop(_ sender: NetService) {
+        log(.default(.service, "Service stopped"))
     }
     
 }
@@ -73,9 +78,19 @@ extension BonjourServer: NetServiceDelegate {
 extension BonjourServer: StreamDelegate {
     
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
+        if eventCode.contains(.openCompleted) {
+            openedStreams += 1
+            
+            // Once we have both streams open, stop the service
+            if openedStreams == 2 {
+                log(.success(.connecting, "Successfully opened input and output streams"))
+                service.stop()
+            }
+        }
+        
         if eventCode.contains(.hasBytesAvailable) {
-            guard let inputStream = self.inputStream else {
-                logService?.log(.error(.streaming, "Handling input stream, however no input stream set"))
+            guard let inputStream = inputStream else {
+                log(.error(.streaming, "Handling input stream, however no input stream set"))
                 return
             }
             
@@ -86,8 +101,7 @@ extension BonjourServer: StreamDelegate {
             while inputStream.hasBytesAvailable {
                 let len = inputStream.read(&buffer, maxLength: bufferSize)
                 if len < 0 {
-                    logService?.log(.error(.streaming, "Error reading stream. Closing streams."))
-                    return self.closeStreams()
+                    fatalError("Error reading stream: buffer length cannot be less than 0")
                 }
                 
                 if len > 0 {
@@ -97,7 +111,7 @@ extension BonjourServer: StreamDelegate {
                 if len == 0 { break }
             }
             
-            logService?.log(.default(.streaming, "Received message: \(message)"))
+            log(.default(.streaming, "Received message from client: \(message)"))
         }
     }
     
@@ -105,11 +119,6 @@ extension BonjourServer: StreamDelegate {
 
 // MARK: - Private Utility Methods
 private extension BonjourServer {
-    
-    func closeStreams() {
-        close(stream: &inputStream)
-        close(stream: &outputStream)
-    }
     
     /**
      Opens a stream and sets its delegate to self, then returns it.
@@ -122,13 +131,14 @@ private extension BonjourServer {
         return stream
     }
     
-    /**
-     Closes and nullifies a stream
-     */
-    func close<T: Stream>(stream: inout T?) {
-        stream?.remove(from: .current, forMode: .default)
-        stream?.close()
-        stream = nil
+    func log(_ log: Log) {
+        logService?.log(log)
+    }
+    
+    func getErrorMessage(_ errorDict: [String:NSNumber]) -> String {
+        let domain = errorDict["NSNetServicesErrorDomain"]!
+        let errorCode = errorDict["NSNetServicesErrorCode"]!
+        return "Failed with domain: \(domain) and error code: \(errorCode)"
     }
     
 }

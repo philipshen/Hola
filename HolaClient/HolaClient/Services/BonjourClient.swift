@@ -38,8 +38,6 @@ class BonjourClient: NSObject {
     }
     private var streamsConnectedCompletion: (() -> Void)?
     
-    private var hasOpenStreams: Bool { openedStreams != 0 }
-    
     private let browser: NetServiceBrowser
     
     private init(browser: NetServiceBrowser = NetServiceBrowser()) {
@@ -88,7 +86,7 @@ extension BonjourClient {
 extension BonjourClient: NetServiceBrowserDelegate {
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        if !hasOpenStreams && isHolaService(service) {
+        if status == .searchingForServices && isHolaService(service) {
             os_log("Connecting to service \"%@\"", service.name)
             connect(to: service)
         } else {
