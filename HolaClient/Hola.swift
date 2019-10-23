@@ -13,8 +13,4 @@ import Foundation
  */
 public class Hola {
     
-    public static func initialize() {
-        Client.shared.initialize()
-    }
-    
 }

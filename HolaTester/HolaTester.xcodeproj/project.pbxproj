@@ -121,12 +121,10 @@
 		6476C24A2360049C0036E788 /* HolaTester */ = {
 			isa = PBXGroup;
 			children = (
+				64868010236005FD00793055 /* Supporting */,
 				6476C24B2360049C0036E788 /* AppDelegate.swift */,
 				6476C24D2360049D0036E788 /* ViewController.swift */,
-				6476C24F2360049E0036E788 /* Assets.xcassets */,
 				6476C2512360049E0036E788 /* Main.storyboard */,
-				6476C2542360049E0036E788 /* Info.plist */,
-				6476C2552360049E0036E788 /* HolaTester.entitlements */,
 			);
 			path = HolaTester;
 			sourceTree = "<group>";
@@ -164,6 +162,16 @@
 				6486800A2360050300793055 /* HolaClientTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		64868010236005FD00793055 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				6476C24F2360049E0036E788 /* Assets.xcassets */,
+				6476C2542360049E0036E788 /* Info.plist */,
+				6476C2552360049E0036E788 /* HolaTester.entitlements */,
+			);
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -490,12 +498,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HolaTester/HolaTester.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HolaTester/Supporting/HolaTester.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2HN3MWMRX2;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = HolaTester/Info.plist;
+				INFOPLIST_FILE = HolaTester/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -510,12 +518,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HolaTester/HolaTester.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HolaTester/Supporting/HolaTester.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = 2HN3MWMRX2;
 				ENABLE_HARDENED_RUNTIME = YES;
-				INFOPLIST_FILE = HolaTester/Info.plist;
+				INFOPLIST_FILE = HolaTester/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",

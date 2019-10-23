@@ -89,13 +89,35 @@ extension Client: NetServiceBrowserDelegate {
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
         if status == .searchingForServices && isHolaService(service) {
             os_log("Connecting to service \"%@\"", service.name)
-            connect(to: service)
+            self.service = service
+            service.delegate = self
+            service.resolve(withTimeout: 10)
+            print("Done")
+//            connect(to: service)
         } else {
             os_log("Ignoring service \"%@\"", service.name)
         }
     }
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {}
+    
+}
+
+extension Client: NetServiceDelegate {
+    
+    func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
+        print(errorDict)
+    }
+    
+    func netServiceDidResolveAddress(_ sender: NetService) {
+        print(sender.hostName)
+        sender.addresses?.forEach({
+            print(String(data: $0, encoding: .utf8)!)
+        })
+        
+        // NEED TO CONVERT THE ADDRESSES TO IP. NO NEED TO MESS AROUND
+        // WITH THAT SOCKET STUFF...
+    }
     
 }
 

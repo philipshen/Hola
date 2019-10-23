@@ -34,6 +34,7 @@ class Server: NSObject {
     
     func publish() {
         log(.default(.publishing, "Publishing Hola service \"\(service.name)\""))
+//        service.resolve(withTimeout: 10)
         service.publish(options: .listenForConnections)
     }
     
@@ -49,7 +50,6 @@ extension Server: NetServiceDelegate {
             outputStream.close()
             log(.error(.connecting, "Unable to connect to \(sender.name): connection already open."))
         } else {
-            service.stop()
             self.inputStream = open(stream: inputStream)
             self.outputStream = open(stream: outputStream)
             log(.success(.connecting, "Connection to \(service.name) accepted"))
@@ -64,12 +64,8 @@ extension Server: NetServiceDelegate {
         log(.success(.publishing, "Published Bonjour service \"\(sender.name)\" to \(sender.domain):\(sender.port)"))
     }
     
-    func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
-        log(.error(.service, getErrorMessage(errorDict)))
-    }
-    
     func netServiceDidStop(_ sender: NetService) {
-        log(.default(.service, "Service stopped"))
+        log(.error(.service, "Service stopped"))
     }
     
 }

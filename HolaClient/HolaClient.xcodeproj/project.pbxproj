@@ -61,25 +61,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6476C23E235FFD660036E788 /* Extension */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extension;
-			sourceTree = "<group>";
-		};
-		6486800D2360055F00793055 /* API */ = {
-			isa = PBXGroup;
-			children = (
-				6486800E2360056E00793055 /* Hola.swift */,
-			);
-			path = API;
-			sourceTree = "<group>";
-		};
 		CD3B2DA9235F795000E16BF2 = {
 			isa = PBXGroup;
 			children = (
 				CD3B2DB4235F795000E16BF2 /* HolaClient */,
+				6486800E2360056E00793055 /* Hola.swift */,
 				CD3B2DD7235F797200E16BF2 /* HolaClientTests */,
 				CD3B2DB3235F795000E16BF2 /* Products */,
 			);
@@ -97,8 +83,6 @@
 		CD3B2DB4235F795000E16BF2 /* HolaClient */ = {
 			isa = PBXGroup;
 			children = (
-				6486800D2360055F00793055 /* API */,
-				6476C23E235FFD660036E788 /* Extension */,
 				CD438A9A235F9E9E009F3A33 /* Services */,
 				CD3B2DDC235F79B000E16BF2 /* Supporting */,
 			);
