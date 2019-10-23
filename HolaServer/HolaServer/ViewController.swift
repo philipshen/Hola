@@ -11,17 +11,30 @@ import os.log
 
 class ViewController: NSViewController {
     
+    @IBOutlet var hostTextField: NSTextField!
     @IBOutlet var textView: NSTextView!
     
     lazy var logService = LogService(delegate: self)
-    lazy var server = BonjourServer(logService: logService)
+    lazy var server = Server(logService: logService)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        hostTextField.delegate = self
         textView.isEditable = false
+        
         server.publish()
     }
 
+}
+
+// MARK: - NSTextFieldDelegate
+extension ViewController: NSTextFieldDelegate {
+    
+    func controlTextDidChange(_ obj: Notification) {
+        
+    }
+    
 }
 
 // MARK: - LogServiceDelegate

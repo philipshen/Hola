@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6486800F2360056E00793055 /* Hola.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6486800E2360056E00793055 /* Hola.swift */; };
 		CD3B2DB6235F795000E16BF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */; };
 		CD3B2DBA235F795000E16BF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B2DB9235F795000E16BF2 /* ViewController.swift */; };
 		CD3B2DBD235F795000E16BF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DBB235F795000E16BF2 /* Main.storyboard */; };
@@ -14,7 +15,7 @@
 		CD3B2DC2235F795200E16BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DC0235F795200E16BF2 /* LaunchScreen.storyboard */; };
 		CD3B2DDA235F797200E16BF2 /* HolaClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B2DD8235F797200E16BF2 /* HolaClientTests.swift */; };
 		CD3B2DDB235F797200E16BF2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DD9235F797200E16BF2 /* Info.plist */; };
-		CD438A99235F9E9A009F3A33 /* BonjourClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438A98235F9E9A009F3A33 /* BonjourClient.swift */; };
+		CD438A99235F9E9A009F3A33 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438A98235F9E9A009F3A33 /* Client.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6486800E2360056E00793055 /* Hola.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hola.swift; sourceTree = "<group>"; };
 		CD3B2DB2235F795000E16BF2 /* HolaClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolaClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CD3B2DB9235F795000E16BF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +40,7 @@
 		CD3B2DC8235F795200E16BF2 /* HolaClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolaClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD3B2DD8235F797200E16BF2 /* HolaClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolaClientTests.swift; sourceTree = "<group>"; };
 		CD3B2DD9235F797200E16BF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD438A98235F9E9A009F3A33 /* BonjourClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonjourClient.swift; sourceTree = "<group>"; };
+		CD438A98235F9E9A009F3A33 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6476C23E235FFD660036E788 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		6486800D2360055F00793055 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				6486800E2360056E00793055 /* Hola.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		CD3B2DA9235F795000E16BF2 = {
 			isa = PBXGroup;
 			children = (
@@ -80,12 +97,10 @@
 		CD3B2DB4235F795000E16BF2 /* HolaClient */ = {
 			isa = PBXGroup;
 			children = (
+				6486800D2360055F00793055 /* API */,
+				6476C23E235FFD660036E788 /* Extension */,
 				CD438A9A235F9E9E009F3A33 /* Services */,
 				CD3B2DDC235F79B000E16BF2 /* Supporting */,
-				CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */,
-				CD3B2DB9235F795000E16BF2 /* ViewController.swift */,
-				CD3B2DBB235F795000E16BF2 /* Main.storyboard */,
-				CD3B2DC0235F795200E16BF2 /* LaunchScreen.storyboard */,
 			);
 			path = HolaClient;
 			sourceTree = "<group>";
@@ -102,6 +117,10 @@
 		CD3B2DDC235F79B000E16BF2 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */,
+				CD3B2DB9235F795000E16BF2 /* ViewController.swift */,
+				CD3B2DBB235F795000E16BF2 /* Main.storyboard */,
+				CD3B2DC0235F795200E16BF2 /* LaunchScreen.storyboard */,
 				CD3B2DBE235F795200E16BF2 /* Assets.xcassets */,
 				CD3B2DC3235F795200E16BF2 /* Info.plist */,
 			);
@@ -111,7 +130,7 @@
 		CD438A9A235F9E9E009F3A33 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CD438A98235F9E9A009F3A33 /* BonjourClient.swift */,
+				CD438A98235F9E9A009F3A33 /* Client.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -241,7 +260,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD3B2DBA235F795000E16BF2 /* ViewController.swift in Sources */,
-				CD438A99235F9E9A009F3A33 /* BonjourClient.swift in Sources */,
+				CD438A99235F9E9A009F3A33 /* Client.swift in Sources */,
+				6486800F2360056E00793055 /* Hola.swift in Sources */,
 				CD3B2DB6235F795000E16BF2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

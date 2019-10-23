@@ -15,7 +15,7 @@ import os.log
  This class is a singleton; apps that depend on Hola will interact with the API, most of which goes through
  this client.
  */
-class BonjourClient: NSObject {
+class Client: NSObject {
     
     private enum Status: String {
         case uninitialized
@@ -24,8 +24,9 @@ class BonjourClient: NSObject {
         case openedStreams
     }
     
-    static let shared = BonjourClient()
+    static let shared = Client()
     
+    private var service: NetService?
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
     private var status: Status = .uninitialized {
@@ -49,7 +50,7 @@ class BonjourClient: NSObject {
 }
 
 // MARK: - API
-extension BonjourClient {
+extension Client {
     
     func initialize() {
         browser.searchForServices(ofType: "_https._tcp", inDomain: "local.")
@@ -83,7 +84,7 @@ extension BonjourClient {
 }
 
 // MARK: - NetServiceBrowserDelegate
-extension BonjourClient: NetServiceBrowserDelegate {
+extension Client: NetServiceBrowserDelegate {
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
         if status == .searchingForServices && isHolaService(service) {
@@ -98,7 +99,7 @@ extension BonjourClient: NetServiceBrowserDelegate {
     
 }
 
-extension BonjourClient: StreamDelegate {
+extension Client: StreamDelegate {
     
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         if eventCode.contains(.openCompleted) {
@@ -120,13 +121,14 @@ extension BonjourClient: StreamDelegate {
 }
 
 // MARK: - Private Utility Methods
-private extension BonjourClient {
+private extension Client {
     
     func isHolaService(_ service: NetService) -> Bool {
         return service.name.hasPrefix("hola")
     }
     
     func connect(to service: NetService) {
+        self.service = service
         let success = service.getInputStream(&inputStream, outputStream: &outputStream)
         
         if success {

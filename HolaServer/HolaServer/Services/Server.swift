@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BonjourServer: NSObject {
+class Server: NSObject {
     
     private var inputStream: InputStream?
     private var outputStream: OutputStream?
@@ -39,7 +39,7 @@ class BonjourServer: NSObject {
     
 }
 
-extension BonjourServer: NetServiceDelegate {
+extension Server: NetServiceDelegate {
     
     func netService(_ sender: NetService, didAcceptConnectionWith inputStream: InputStream, outputStream: OutputStream) {
         if let inputStream = self.inputStream {
@@ -75,7 +75,7 @@ extension BonjourServer: NetServiceDelegate {
 }
 
 // MARK: - Stream Delegate
-extension BonjourServer: StreamDelegate {
+extension Server: StreamDelegate {
     
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         if eventCode.contains(.openCompleted) {
@@ -118,7 +118,7 @@ extension BonjourServer: StreamDelegate {
 }
 
 // MARK: - Private Utility Methods
-private extension BonjourServer {
+private extension Server {
     
     /**
      Opens a stream and sets its delegate to self, then returns it.
