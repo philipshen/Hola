@@ -7,143 +7,160 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6486800F2360056E00793055 /* Hola.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6486800E2360056E00793055 /* Hola.swift */; };
-		CD3B2DB6235F795000E16BF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */; };
-		CD3B2DBA235F795000E16BF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B2DB9235F795000E16BF2 /* ViewController.swift */; };
-		CD3B2DBD235F795000E16BF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DBB235F795000E16BF2 /* Main.storyboard */; };
-		CD3B2DBF235F795200E16BF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DBE235F795200E16BF2 /* Assets.xcassets */; };
-		CD3B2DC2235F795200E16BF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DC0235F795200E16BF2 /* LaunchScreen.storyboard */; };
-		CD3B2DDA235F797200E16BF2 /* HolaClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3B2DD8235F797200E16BF2 /* HolaClientTests.swift */; };
-		CD3B2DDB235F797200E16BF2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CD3B2DD9235F797200E16BF2 /* Info.plist */; };
-		CD438A99235F9E9A009F3A33 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438A98235F9E9A009F3A33 /* Client.swift */; };
-		CD438A9E2360D65A009F3A33 /* NSData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438A9D2360D65A009F3A33 /* NSData+Utils.swift */; };
-		CD438AA02360DB2F009F3A33 /* NetService+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD438A9F2360DB2F009F3A33 /* NetService+Utils.swift */; };
+		CD0145C92360FAC300C5DD8C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145C82360FAC300C5DD8C /* Client.swift */; };
+		CD0145CC2360FAC800C5DD8C /* NSData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145CA2360FAC800C5DD8C /* NSData+Utils.swift */; };
+		CD0145CD2360FAC800C5DD8C /* NetService+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145CB2360FAC800C5DD8C /* NetService+Utils.swift */; };
+		CD01460F2360FC4200C5DD8C /* Hola.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01460E2360FC4200C5DD8C /* Hola.swift */; };
+		CD0146122360FCD400C5DD8C /* HolaClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0146112360FCD400C5DD8C /* HolaClientError.swift */; };
+		CD0146142360FCEA00C5DD8C /* UnknownError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0146132360FCEA00C5DD8C /* UnknownError.swift */; };
+		CD3231D82360F8FC00382992 /* HolaClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD3231CE2360F8FC00382992 /* HolaClient.framework */; };
+		CD3231DD2360F8FC00382992 /* HolaClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD3231DC2360F8FC00382992 /* HolaClientTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		CD3B2DC9235F795200E16BF2 /* PBXContainerItemProxy */ = {
+		CD3231D92360F8FC00382992 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = CD3B2DAA235F795000E16BF2 /* Project object */;
+			containerPortal = CD3231C52360F8FC00382992 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = CD3B2DB1235F795000E16BF2;
+			remoteGlobalIDString = CD3231CD2360F8FC00382992;
 			remoteInfo = HolaClient;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6486800E2360056E00793055 /* Hola.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hola.swift; sourceTree = "<group>"; };
-		CD3B2DB2235F795000E16BF2 /* HolaClient.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolaClient.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CD3B2DB9235F795000E16BF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		CD3B2DBC235F795000E16BF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		CD3B2DBE235F795200E16BF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CD3B2DC1235F795200E16BF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CD3B2DC3235F795200E16BF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD3B2DC8235F795200E16BF2 /* HolaClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolaClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD3B2DD8235F797200E16BF2 /* HolaClientTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolaClientTests.swift; sourceTree = "<group>"; };
-		CD3B2DD9235F797200E16BF2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CD438A98235F9E9A009F3A33 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
-		CD438A9D2360D65A009F3A33 /* NSData+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+Utils.swift"; sourceTree = "<group>"; };
-		CD438A9F2360DB2F009F3A33 /* NetService+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetService+Utils.swift"; sourceTree = "<group>"; };
+		CD0145C82360FAC300C5DD8C /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = HolaClient/Services/Client.swift; sourceTree = SOURCE_ROOT; };
+		CD0145CA2360FAC800C5DD8C /* NSData+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+Utils.swift"; path = "HolaClient/Extensions/NSData+Utils.swift"; sourceTree = SOURCE_ROOT; };
+		CD0145CB2360FAC800C5DD8C /* NetService+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NetService+Utils.swift"; path = "HolaClient/Extensions/NetService+Utils.swift"; sourceTree = SOURCE_ROOT; };
+		CD01460E2360FC4200C5DD8C /* Hola.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hola.swift; sourceTree = "<group>"; };
+		CD0146112360FCD400C5DD8C /* HolaClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolaClientError.swift; sourceTree = "<group>"; };
+		CD0146132360FCEA00C5DD8C /* UnknownError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnknownError.swift; sourceTree = "<group>"; };
+		CD3231CE2360F8FC00382992 /* HolaClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HolaClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3231D72360F8FC00382992 /* HolaClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolaClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD3231DC2360F8FC00382992 /* HolaClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolaClientTests.swift; sourceTree = "<group>"; };
+		CD3231DE2360F8FC00382992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CD3231E92360F92700382992 /* Hola.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hola.swift; path = ../HolaClientOld/Hola.swift; sourceTree = "<group>"; };
+		CD3232172360FAB100382992 /* HolaClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HolaClient.h; path = HolaClient/Supporting/HolaClient.h; sourceTree = SOURCE_ROOT; };
+		CD3232182360FAB100382992 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = HolaClient/Supporting/Info.plist; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		CD3B2DAF235F795000E16BF2 /* Frameworks */ = {
+		CD3231CB2360F8FC00382992 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD3B2DC5235F795200E16BF2 /* Frameworks */ = {
+		CD3231D42360F8FC00382992 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD3231D82360F8FC00382992 /* HolaClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CD3B2DA9235F795000E16BF2 = {
+		CD0146102360FCC000C5DD8C /* Errors */ = {
 			isa = PBXGroup;
 			children = (
-				CD3B2DB4235F795000E16BF2 /* HolaClient */,
-				6486800E2360056E00793055 /* Hola.swift */,
-				CD3B2DD7235F797200E16BF2 /* HolaClientTests */,
-				CD3B2DB3235F795000E16BF2 /* Products */,
+				CD0146112360FCD400C5DD8C /* HolaClientError.swift */,
+				CD0146132360FCEA00C5DD8C /* UnknownError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		CD3231C42360F8FC00382992 = {
+			isa = PBXGroup;
+			children = (
+				CD3231D02360F8FC00382992 /* HolaClient */,
+				CD3231DB2360F8FC00382992 /* HolaClientTests */,
+				CD3231CF2360F8FC00382992 /* Products */,
+				CD3231E92360F92700382992 /* Hola.swift */,
 			);
 			sourceTree = "<group>";
 		};
-		CD3B2DB3235F795000E16BF2 /* Products */ = {
+		CD3231CF2360F8FC00382992 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CD3B2DB2235F795000E16BF2 /* HolaClient.app */,
-				CD3B2DC8235F795200E16BF2 /* HolaClientTests.xctest */,
+				CD3231CE2360F8FC00382992 /* HolaClient.framework */,
+				CD3231D72360F8FC00382992 /* HolaClientTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CD3B2DB4235F795000E16BF2 /* HolaClient */ = {
+		CD3231D02360F8FC00382992 /* HolaClient */ = {
 			isa = PBXGroup;
 			children = (
-				CD438A9C2360D648009F3A33 /* Extensions */,
-				CD438A9A235F9E9E009F3A33 /* Services */,
-				CD3B2DDC235F79B000E16BF2 /* Supporting */,
+				CD0146102360FCC000C5DD8C /* Errors */,
+				CD3231EB2360F93300382992 /* Extensions */,
+				CD3231EE2360F93300382992 /* Services */,
+				CD3231F02360F93300382992 /* Supporting */,
+				CD01460E2360FC4200C5DD8C /* Hola.swift */,
 			);
 			path = HolaClient;
 			sourceTree = "<group>";
 		};
-		CD3B2DD7235F797200E16BF2 /* HolaClientTests */ = {
+		CD3231DB2360F8FC00382992 /* HolaClientTests */ = {
 			isa = PBXGroup;
 			children = (
-				CD3B2DD8235F797200E16BF2 /* HolaClientTests.swift */,
-				CD3B2DD9235F797200E16BF2 /* Info.plist */,
+				CD3231DC2360F8FC00382992 /* HolaClientTests.swift */,
+				CD3231DE2360F8FC00382992 /* Info.plist */,
 			);
 			path = HolaClientTests;
 			sourceTree = "<group>";
 		};
-		CD3B2DDC235F79B000E16BF2 /* Supporting */ = {
+		CD3231EB2360F93300382992 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CD3B2DB5235F795000E16BF2 /* AppDelegate.swift */,
-				CD3B2DB9235F795000E16BF2 /* ViewController.swift */,
-				CD3B2DBB235F795000E16BF2 /* Main.storyboard */,
-				CD3B2DC0235F795200E16BF2 /* LaunchScreen.storyboard */,
-				CD3B2DBE235F795200E16BF2 /* Assets.xcassets */,
-				CD3B2DC3235F795200E16BF2 /* Info.plist */,
+				CD0145CB2360FAC800C5DD8C /* NetService+Utils.swift */,
+				CD0145CA2360FAC800C5DD8C /* NSData+Utils.swift */,
 			);
-			path = Supporting;
+			name = Extensions;
+			path = ../../HolaClientOld/Hola/Extensions;
 			sourceTree = "<group>";
 		};
-		CD438A9A235F9E9E009F3A33 /* Services */ = {
+		CD3231EE2360F93300382992 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				CD438A98235F9E9A009F3A33 /* Client.swift */,
+				CD0145C82360FAC300C5DD8C /* Client.swift */,
 			);
-			path = Services;
+			name = Services;
+			path = ../../HolaClientOld/Hola/Services;
 			sourceTree = "<group>";
 		};
-		CD438A9C2360D648009F3A33 /* Extensions */ = {
+		CD3231F02360F93300382992 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
-				CD438A9D2360D65A009F3A33 /* NSData+Utils.swift */,
-				CD438A9F2360DB2F009F3A33 /* NetService+Utils.swift */,
+				CD3232172360FAB100382992 /* HolaClient.h */,
+				CD3232182360FAB100382992 /* Info.plist */,
 			);
-			path = Extensions;
+			name = Supporting;
+			path = ../../HolaClientOld/Hola/Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		CD3231C92360F8FC00382992 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
-		CD3B2DB1235F795000E16BF2 /* HolaClient */ = {
+		CD3231CD2360F8FC00382992 /* HolaClient */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD3B2DD1235F795200E16BF2 /* Build configuration list for PBXNativeTarget "HolaClient" */;
+			buildConfigurationList = CD3231E22360F8FC00382992 /* Build configuration list for PBXNativeTarget "HolaClient" */;
 			buildPhases = (
-				CD3B2DAE235F795000E16BF2 /* Sources */,
-				CD3B2DAF235F795000E16BF2 /* Frameworks */,
-				CD3B2DB0235F795000E16BF2 /* Resources */,
-				CD3B2DDD235F7A8000E16BF2 /* Begin HolaServer */,
+				CD3231C92360F8FC00382992 /* Headers */,
+				CD3231CA2360F8FC00382992 /* Sources */,
+				CD3231CB2360F8FC00382992 /* Frameworks */,
+				CD3231CC2360F8FC00382992 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -151,47 +168,47 @@
 			);
 			name = HolaClient;
 			productName = HolaClient;
-			productReference = CD3B2DB2235F795000E16BF2 /* HolaClient.app */;
-			productType = "com.apple.product-type.application";
+			productReference = CD3231CE2360F8FC00382992 /* HolaClient.framework */;
+			productType = "com.apple.product-type.framework";
 		};
-		CD3B2DC7235F795200E16BF2 /* HolaClientTests */ = {
+		CD3231D62360F8FC00382992 /* HolaClientTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CD3B2DD4235F795200E16BF2 /* Build configuration list for PBXNativeTarget "HolaClientTests" */;
+			buildConfigurationList = CD3231E52360F8FC00382992 /* Build configuration list for PBXNativeTarget "HolaClientTests" */;
 			buildPhases = (
-				CD3B2DC4235F795200E16BF2 /* Sources */,
-				CD3B2DC5235F795200E16BF2 /* Frameworks */,
-				CD3B2DC6235F795200E16BF2 /* Resources */,
+				CD3231D32360F8FC00382992 /* Sources */,
+				CD3231D42360F8FC00382992 /* Frameworks */,
+				CD3231D52360F8FC00382992 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CD3B2DCA235F795200E16BF2 /* PBXTargetDependency */,
+				CD3231DA2360F8FC00382992 /* PBXTargetDependency */,
 			);
 			name = HolaClientTests;
 			productName = HolaClientTests;
-			productReference = CD3B2DC8235F795200E16BF2 /* HolaClientTests.xctest */;
+			productReference = CD3231D72360F8FC00382992 /* HolaClientTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		CD3B2DAA235F795000E16BF2 /* Project object */ = {
+		CD3231C52360F8FC00382992 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1110;
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "Philip Shen";
 				TargetAttributes = {
-					CD3B2DB1235F795000E16BF2 = {
+					CD3231CD2360F8FC00382992 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 					};
-					CD3B2DC7235F795200E16BF2 = {
+					CD3231D62360F8FC00382992 = {
 						CreatedOnToolsVersion = 11.1;
-						TestTargetID = CD3B2DB1235F795000E16BF2;
 					};
 				};
 			};
-			buildConfigurationList = CD3B2DAD235F795000E16BF2 /* Build configuration list for PBXProject "HolaClient" */;
+			buildConfigurationList = CD3231C82360F8FC00382992 /* Build configuration list for PBXProject "HolaClient" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -199,112 +216,68 @@
 				en,
 				Base,
 			);
-			mainGroup = CD3B2DA9235F795000E16BF2;
-			productRefGroup = CD3B2DB3235F795000E16BF2 /* Products */;
+			mainGroup = CD3231C42360F8FC00382992;
+			productRefGroup = CD3231CF2360F8FC00382992 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CD3B2DB1235F795000E16BF2 /* HolaClient */,
-				CD3B2DC7235F795200E16BF2 /* HolaClientTests */,
+				CD3231CD2360F8FC00382992 /* HolaClient */,
+				CD3231D62360F8FC00382992 /* HolaClientTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		CD3B2DB0235F795000E16BF2 /* Resources */ = {
+		CD3231CC2360F8FC00382992 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD3B2DC2235F795200E16BF2 /* LaunchScreen.storyboard in Resources */,
-				CD3B2DBF235F795200E16BF2 /* Assets.xcassets in Resources */,
-				CD3B2DBD235F795000E16BF2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD3B2DC6235F795200E16BF2 /* Resources */ = {
+		CD3231D52360F8FC00382992 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD3B2DDB235F797200E16BF2 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		CD3B2DDD235F7A8000E16BF2 /* Begin HolaServer */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Begin HolaServer";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcodebuild -scheme HolaServer -project ../HolaServer/HolaServer.xcodeproj/ -configuration ${CONFIGURATION}\nopen ~/Library/Developer/Xcode/DerivedData/HolaServer-*/Build/Products/${CONFIGURATION}/HolaServer.app\n\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
-		CD3B2DAE235F795000E16BF2 /* Sources */ = {
+		CD3231CA2360F8FC00382992 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD3B2DBA235F795000E16BF2 /* ViewController.swift in Sources */,
-				CD438A9E2360D65A009F3A33 /* NSData+Utils.swift in Sources */,
-				CD438A99235F9E9A009F3A33 /* Client.swift in Sources */,
-				6486800F2360056E00793055 /* Hola.swift in Sources */,
-				CD3B2DB6235F795000E16BF2 /* AppDelegate.swift in Sources */,
-				CD438AA02360DB2F009F3A33 /* NetService+Utils.swift in Sources */,
+				CD0145CC2360FAC800C5DD8C /* NSData+Utils.swift in Sources */,
+				CD0146142360FCEA00C5DD8C /* UnknownError.swift in Sources */,
+				CD01460F2360FC4200C5DD8C /* Hola.swift in Sources */,
+				CD0145C92360FAC300C5DD8C /* Client.swift in Sources */,
+				CD0146122360FCD400C5DD8C /* HolaClientError.swift in Sources */,
+				CD0145CD2360FAC800C5DD8C /* NetService+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD3B2DC4235F795200E16BF2 /* Sources */ = {
+		CD3231D32360F8FC00382992 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD3B2DDA235F797200E16BF2 /* HolaClientTests.swift in Sources */,
+				CD3231DD2360F8FC00382992 /* HolaClientTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		CD3B2DCA235F795200E16BF2 /* PBXTargetDependency */ = {
+		CD3231DA2360F8FC00382992 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = CD3B2DB1235F795000E16BF2 /* HolaClient */;
-			targetProxy = CD3B2DC9235F795200E16BF2 /* PBXContainerItemProxy */;
+			target = CD3231CD2360F8FC00382992 /* HolaClient */;
+			targetProxy = CD3231D92360F8FC00382992 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		CD3B2DBB235F795000E16BF2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD3B2DBC235F795000E16BF2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CD3B2DC0235F795200E16BF2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CD3B2DC1235F795200E16BF2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		CD3B2DCF235F795200E16BF2 /* Debug */ = {
+		CD3231E02360F8FC00382992 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -337,6 +310,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -361,10 +335,12 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
 		};
-		CD3B2DD0235F795200E16BF2 /* Release */ = {
+		CD3231E12360F8FC00382992 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -397,6 +373,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -415,56 +392,71 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		CD3B2DD2235F795200E16BF2 /* Debug */ = {
+		CD3231E32360F8FC00382992 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8G99YY6VVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = HolaClient/Supporting/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.philipshen.projects.HolaClient;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		CD3B2DD3235F795200E16BF2 /* Release */ = {
+		CD3231E42360F8FC00382992 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 8G99YY6VVQ;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = HolaClient/Supporting/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.philipshen.projects.HolaClient;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		CD3B2DD5235F795200E16BF2 /* Debug */ = {
+		CD3231E62360F8FC00382992 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8G99YY6VVQ;
 				INFOPLIST_FILE = HolaClientTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -474,19 +466,16 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HolaClient.app/HolaClient";
 			};
 			name = Debug;
 		};
-		CD3B2DD6235F795200E16BF2 /* Release */ = {
+		CD3231E72360F8FC00382992 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8G99YY6VVQ;
 				INFOPLIST_FILE = HolaClientTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,41 +485,40 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HolaClient.app/HolaClient";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CD3B2DAD235F795000E16BF2 /* Build configuration list for PBXProject "HolaClient" */ = {
+		CD3231C82360F8FC00382992 /* Build configuration list for PBXProject "HolaClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD3B2DCF235F795200E16BF2 /* Debug */,
-				CD3B2DD0235F795200E16BF2 /* Release */,
+				CD3231E02360F8FC00382992 /* Debug */,
+				CD3231E12360F8FC00382992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD3B2DD1235F795200E16BF2 /* Build configuration list for PBXNativeTarget "HolaClient" */ = {
+		CD3231E22360F8FC00382992 /* Build configuration list for PBXNativeTarget "HolaClient" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD3B2DD2235F795200E16BF2 /* Debug */,
-				CD3B2DD3235F795200E16BF2 /* Release */,
+				CD3231E32360F8FC00382992 /* Debug */,
+				CD3231E42360F8FC00382992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD3B2DD4235F795200E16BF2 /* Build configuration list for PBXNativeTarget "HolaClientTests" */ = {
+		CD3231E52360F8FC00382992 /* Build configuration list for PBXNativeTarget "HolaClientTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				CD3B2DD5235F795200E16BF2 /* Debug */,
-				CD3B2DD6235F795200E16BF2 /* Release */,
+				CD3231E62360F8FC00382992 /* Debug */,
+				CD3231E72360F8FC00382992 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = CD3B2DAA235F795000E16BF2 /* Project object */;
+	rootObject = CD3231C52360F8FC00382992 /* Project object */;
 }

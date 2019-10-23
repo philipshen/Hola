@@ -9,32 +9,34 @@
 import Foundation
 import os.log
 
-/**
- Connects to the first "hola" client it can find. THIS IS SUBJECT TO CHANGE. Ideally, server/clients would pair automatically when run together, even when run from the same machine...
- 
- This class is a singleton; apps that depend on Hola will interact with the API, most of which goes through
- this client.
- */
 class Client: NSObject {
     
-    private struct Constants {
-        static let defaultTimeout = 10
+    private enum Status {
+        /// Indicates the Client is waiting to start searching for Hola services
+        case uninitialized
+        
+        /// Indicates the client is currently resolving the server's host
+        case resolving
+        
+        /// Indicates the client has finished resolving the server's host
+        case resolved(String)
+        
+        /// Indicates the client failed to resolve with a given error
+        case error(Error)
     }
     
     static let shared = Client()
     
-    private var service: NetService? {
-        didSet {
-            
-        }
-    }
+    private var status: Status = .uninitialized
+    private var service: NetService?
+    private lazy var getURLCallbacks = [((String?, Error?) -> Void)]()
+    
     private let browser: NetServiceBrowser
     
     private init(browser: NetServiceBrowser = NetServiceBrowser()) {
         self.browser = browser
         super.init()
         browser.delegate = self
-        browser.searchForServices(ofType: "_https._tcp", inDomain: "local.")
     }
     
 }
@@ -42,8 +44,17 @@ class Client: NSObject {
 // MARK: - API
 extension Client {
     
-    func getURL(timeout: Int = Constants.defaultTimeout, completion: (String?, Error?) -> Void) {
-        
+    // TODO: Need to implement timeout. This can hang forever.
+    func getURL(completion: @escaping (String?, Error?) -> Void) {
+        switch status {
+        case .uninitialized, .error(_):
+            beginResolution()
+            fallthrough
+        case .resolving:
+            getURLCallbacks.append(completion)
+        case .resolved(let url):
+            completion(url, nil)
+        }
     }
     
 }
@@ -51,10 +62,8 @@ extension Client {
 // MARK: - NetServiceBrowserDelegate
 extension Client: NetServiceBrowserDelegate {
     
-    // TODO: Gracefully handle multiple services... there should really only be one
-    // that we match, though.
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        if service == nil && isHolaService(service) {
+        if self.service == nil && isHolaService(service) {
             os_log("Found Hola service \"%@\"", service.name)
             self.service = service
             service.delegate = self
@@ -71,11 +80,23 @@ extension Client: NetServiceBrowserDelegate {
 extension Client: NetServiceDelegate {
     
     func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
-        print(errorDict)
+        // Fail each completion handler
+        let domain = errorDict["NSNetServicesErrorDomain"]!
+        let errorCode = errorDict["NSNetServicesErrorCode"]!
+        let error = HolaClientError.failedToResolve(domain: domain, code: errorCode)
+        getURLCallbacks.forEach { $0(nil, error) }
+        getURLCallbacks.removeAll()
+        status = .error(error)
     }
     
     func netServiceDidResolveAddress(_ sender: NetService) {
-        print(sender.urlString)
+        guard let url = sender.urlString else {
+            fatalError("Resolved address, but unable to find the service")
+        }
+        
+        getURLCallbacks.forEach { $0(url, nil) }
+        getURLCallbacks.removeAll()
+        status = .resolved(url)
     }
     
 }
@@ -85,6 +106,15 @@ private extension Client {
     
     func isHolaService(_ service: NetService) -> Bool {
         return service.name.hasPrefix("hola")
+    }
+    
+    func beginResolution() {
+        status = .resolving
+        if let service = service {
+            service.resolve(withTimeout: 10)
+        } else {
+            browser.searchForServices(ofType: "_https._tcp", inDomain: "local.")
+        }
     }
     
 }

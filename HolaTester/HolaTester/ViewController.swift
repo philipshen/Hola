@@ -2,25 +2,20 @@
 //  ViewController.swift
 //  HolaTester
 //
-//  Created by Philip Shen on 10/22/19.
+//  Created by Phil Shen on 10/23/19.
 //  Copyright © 2019 Philip Shen. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 import HolaClient
 
-class ViewController: NSViewController {
+class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
-    }
-
-    override var representedObject: Any? {
-        didSet {
-        // Update the view, if already loaded.
-        }
+//        HolaClient. .getURL()
     }
 
 
