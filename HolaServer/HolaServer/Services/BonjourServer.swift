@@ -97,7 +97,7 @@ extension BonjourServer: StreamDelegate {
                 if len == 0 { break }
             }
             
-            logService?.log(.default(.streaming, "Received message: %@", message))
+            logService?.log(.default(.streaming, "Received message: \(message)"))
         }
     }
     

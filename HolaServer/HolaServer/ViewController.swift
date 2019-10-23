@@ -20,10 +20,6 @@ class ViewController: NSViewController {
         let logService = LogService(delegate: self)
         let service = BonjourServer(logService: logService)
         service.publish()
-        
-        let alert = NSAlert()
-        alert.messageText = "Testing"
-        alert.runModal()
     }
 
 }

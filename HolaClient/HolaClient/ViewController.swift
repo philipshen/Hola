@@ -10,9 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let client: BonjourClient = .shared
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
+    @IBAction func testSendButtonPressed(_ sender: Any) {
+        client.send(message: "What's up?")
+    }
+    
 }

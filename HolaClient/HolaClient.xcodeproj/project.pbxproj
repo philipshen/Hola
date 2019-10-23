@@ -217,7 +217,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		CD3B2DDD235F7A8000E16BF2 /* Begin HolaServer */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -229,7 +229,7 @@
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcodebuild -scheme HolaServer -project ../HolaServer/HolaServer.xcodeproj/ -configuration ${CONFIGURATION}\nopen ~/Library/Developer/Xcode/DerivedData/HolaServer-*/Build/Products/${CONFIGURATION}/HolaServer.app\n\n";
 		};
