@@ -10,12 +10,22 @@ import UIKit
 import HolaClient
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var titleLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-//        HolaClient. .getURL()
+        do {
+            loadingIndicator.startAnimating()
+            let url = try Hola.getURL()
+            loadingIndicator.stopAnimating()
+            titleLabel.text = "Server found: \(url)"
+        } catch let error {
+            print(error)
+        }
     }
 
 

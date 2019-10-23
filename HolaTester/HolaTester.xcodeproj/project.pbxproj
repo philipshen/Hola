@@ -15,7 +15,7 @@
 		CD0145E82360FB1C00C5DD8C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CD0145E62360FB1C00C5DD8C /* LaunchScreen.storyboard */; };
 		CD0145F32360FB1C00C5DD8C /* HolaTesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145F22360FB1C00C5DD8C /* HolaTesterTests.swift */; };
 		CD0145FE2360FB1D00C5DD8C /* HolaTesterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145FD2360FB1D00C5DD8C /* HolaTesterUITests.swift */; };
-		CD01460D2360FB4600C5DD8C /* HolaClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD01460C2360FB4600C5DD8C /* HolaClient.framework */; };
+		CD0146152361047300C5DD8C /* HolaClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD01460C2360FB4600C5DD8C /* HolaClient.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CD01460D2360FB4600C5DD8C /* HolaClient.framework in Frameworks */,
+				CD0146152361047300C5DD8C /* HolaClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,13 +103,9 @@
 		CD0145DA2360FB1B00C5DD8C /* HolaTester */ = {
 			isa = PBXGroup;
 			children = (
-				CD0145DB2360FB1B00C5DD8C /* AppDelegate.swift */,
-				CD0145DD2360FB1B00C5DD8C /* SceneDelegate.swift */,
+				CD0146182361050E00C5DD8C /* Supporting */,
 				CD0145DF2360FB1B00C5DD8C /* ViewController.swift */,
 				CD0145E12360FB1B00C5DD8C /* Main.storyboard */,
-				CD0145E42360FB1C00C5DD8C /* Assets.xcassets */,
-				CD0145E62360FB1C00C5DD8C /* LaunchScreen.storyboard */,
-				CD0145E92360FB1C00C5DD8C /* Info.plist */,
 			);
 			path = HolaTester;
 			sourceTree = "<group>";
@@ -138,6 +134,18 @@
 				CD01460C2360FB4600C5DD8C /* HolaClient.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CD0146182361050E00C5DD8C /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				CD0145DD2360FB1B00C5DD8C /* SceneDelegate.swift */,
+				CD0145DB2360FB1B00C5DD8C /* AppDelegate.swift */,
+				CD0145E42360FB1C00C5DD8C /* Assets.xcassets */,
+				CD0145E62360FB1C00C5DD8C /* LaunchScreen.storyboard */,
+				CD0145E92360FB1C00C5DD8C /* Info.plist */,
+			);
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -448,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8G99YY6VVQ;
-				INFOPLIST_FILE = HolaTester/Info.plist;
+				INFOPLIST_FILE = HolaTester/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,7 +474,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 8G99YY6VVQ;
-				INFOPLIST_FILE = HolaTester/Info.plist;
+				INFOPLIST_FILE = HolaTester/Supporting/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

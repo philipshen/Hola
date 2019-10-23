@@ -18,8 +18,9 @@ public class Hola {
         
         var url: String?
         var error: Error?
+        
         group.enter()
-        Client.shared.getURL { fetchedUrl, fetchedError in
+        Hola.getURLAsync { fetchedUrl, fetchedError in
             url = fetchedUrl
             error = fetchedError
             group.leave()
@@ -33,6 +34,10 @@ public class Hola {
         } else {
             throw UnknownError("No url returned")
         }
+    }
+    
+    public static func getURLAsync(completion: @escaping (String?, Error?) -> Void) {
+        Client.shared.getURL(completion: completion)
     }
     
 }

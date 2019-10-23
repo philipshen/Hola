@@ -36,7 +36,7 @@ class Client: NSObject {
     private init(browser: NetServiceBrowser = NetServiceBrowser()) {
         self.browser = browser
         super.init()
-        browser.delegate = self
+        self.browser.delegate = self
     }
     
 }
@@ -63,13 +63,17 @@ extension Client {
 extension Client: NetServiceBrowserDelegate {
     
     func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        if self.service == nil && isHolaService(service) {
-            os_log("Found Hola service \"%@\"", service.name)
-            self.service = service
-            service.delegate = self
-            service.resolve(withTimeout: 10)
+        if self.service == nil {
+            if isHolaService(service) {
+                os_log("Found Hola service \"%@\"", service.name)
+                self.service = service
+                service.delegate = self
+                service.resolve(withTimeout: 10)
+            } else if !moreComing {
+                // Finish with timeout error
+            }
         } else {
-            os_log("Ignoring service \"%@\"", service.name)
+            os_log("Already have a service; ignoring \"%@\"", service.name)
         }
     }
     
