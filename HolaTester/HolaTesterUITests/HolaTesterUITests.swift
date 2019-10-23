@@ -2,7 +2,7 @@
 //  HolaTesterUITests.swift
 //  HolaTesterUITests
 //
-//  Created by Phil Shen on 10/23/19.
+//  Created by Philip Shen on 10/23/19.
 //  Copyright © 2019 Philip Shen. All rights reserved.
 //
 

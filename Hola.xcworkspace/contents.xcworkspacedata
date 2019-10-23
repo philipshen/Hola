@@ -5,9 +5,9 @@
       location = "container:HolaServer/HolaServer.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:HolaClient/HolaClient.xcodeproj">
+      location = "group:HolaTester/HolaTester.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:HolaTester/HolaTester.xcodeproj">
+      location = "group:HolaClient/HolaClient.xcodeproj">
    </FileRef>
 </Workspace>
