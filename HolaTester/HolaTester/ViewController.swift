@@ -19,10 +19,8 @@ class ViewController: UIViewController {
 //            print(url)
 //            print(error)
 //        }
-        DispatchQueue.global(qos: .background).async {
-            let url = Hola.getURL()
-            print(url)
-        }
+        let url = Hola.getURL()
+        print(url)
     }
 
 }

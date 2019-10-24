@@ -18,13 +18,11 @@ public class Hola {
      - Returns:
      */
     public static func getURL(timeout: Double = Hola.defaultTimeout) -> String {
-        let group = DispatchGroup()
-        
-        var url: String?
-        var error: Error?
-        
         Client.shared.beginSearching()
         
+        let group = DispatchGroup()
+        var url: String?
+        var error: Error?
         group.enter()
         Hola.getURLAsync(timeout: timeout) { fetchedUrl, fetchedError in
             url = fetchedUrl

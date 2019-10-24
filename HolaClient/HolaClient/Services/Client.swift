@@ -16,16 +16,31 @@ class Client: NSObject {
     static let shared = Client()
     
     private var service: NetService?
-    private var hasBegunSearching = false
+    private lazy var thread = DispatchQueue.global(qos: .userInteractive)
+    private lazy var timer = DispatchSource.makeTimerSource(flags: [], queue: thread)
+    private lazy var hasBegunSearching = false
     private lazy var callbacks = [UUID:Callback]()
     private lazy var callbackThread = DispatchQueue.global(qos: .background)
     
-    private let browser: NetServiceBrowser
+    private var browser: NetServiceBrowser!
     
     private init(browser: NetServiceBrowser = NetServiceBrowser()) {
-        self.browser = browser
+//        self.browser = browser
         super.init()
-        self.browser.delegate = self
+//        self.browser.delegate = self
+        
+        thread.sync {
+            self.browser = NetServiceBrowser()
+            self.browser.delegate = self
+            self.browser.schedule(in: .current, forMode: .default)
+        }
+        
+        timer.schedule(deadline: .now(), repeating: 1)
+        timer.setEventHandler {
+            let future = Calendar.current.date(byAdding: .second, value: 2, to: Date())!
+            RunLoop.current.run(until: future)
+        }
+        timer.resume()
     }
     
 }
@@ -39,7 +54,9 @@ extension Client {
     func beginSearching() {
         if hasBegunSearching { return }
         hasBegunSearching = true
-        browser.searchForServices(ofType: "_http._tcp", inDomain: "local.")
+        thread.sync {
+            self.browser.searchForServices(ofType: "_http._tcp", inDomain: "local.")
+        }
     }
     
     /**
@@ -84,6 +101,10 @@ extension Client: NetServiceBrowserDelegate {
         }
     }
     
+    func netServiceBrowser(_ browser: NetServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
+        print("Did not search")
+    }
+    
     func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
         if service === self.service {
             self.service = nil
@@ -92,6 +113,7 @@ extension Client: NetServiceBrowserDelegate {
     
 }
 
+// MARK: - NetServiceDelegate
 extension Client: NetServiceDelegate {
     
     func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
