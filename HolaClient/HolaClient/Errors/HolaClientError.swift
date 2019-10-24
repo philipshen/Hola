@@ -11,11 +11,17 @@ import Foundation
 public enum HolaClientError: LocalizedError {
     
     case failedToResolve(domain: NSNumber, code: NSNumber)
+    case noHolaServicesFound
+    case getURLTimeout
     
     public var errorDescription: String? {
         switch self {
         case .failedToResolve(let domain, let code):
-            return "Failed to resolve service (domain: \(domain), errorCode: \(code)"
+            return "Failed to resolve service (domain: \(domain), errorCode: \(code)."
+        case .noHolaServicesFound:
+            return "No Hola services found."
+        case .getURLTimeout:
+            return "Timed out."
         }
     }
     

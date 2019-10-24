@@ -7,14 +7,23 @@
 //
 
 import UIKit
+import HolaClient
 
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view.
+//        Hola.getURLAsync { url, error in
+//            print(url)
+//            print(error)
+//        }
+        DispatchQueue.global(qos: .background).async {
+            let url = Hola.getURL()
+            print(url)
+        }
     }
-
 
 }
 

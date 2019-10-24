@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6406ED8E2361507500B0A5C9 /* GetURLOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406ED8D2361507500B0A5C9 /* GetURLOperation.swift */; };
 		CD0145C92360FAC300C5DD8C /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145C82360FAC300C5DD8C /* Client.swift */; };
 		CD0145CC2360FAC800C5DD8C /* NSData+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145CA2360FAC800C5DD8C /* NSData+Utils.swift */; };
 		CD0145CD2360FAC800C5DD8C /* NetService+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD0145CB2360FAC800C5DD8C /* NetService+Utils.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6406ED8D2361507500B0A5C9 /* GetURLOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetURLOperation.swift; sourceTree = "<group>"; };
 		CD0145C82360FAC300C5DD8C /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Client.swift; path = HolaClient/Services/Client.swift; sourceTree = SOURCE_ROOT; };
 		CD0145CA2360FAC800C5DD8C /* NSData+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NSData+Utils.swift"; path = "HolaClient/Extensions/NSData+Utils.swift"; sourceTree = SOURCE_ROOT; };
 		CD0145CB2360FAC800C5DD8C /* NetService+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "NetService+Utils.swift"; path = "HolaClient/Extensions/NetService+Utils.swift"; sourceTree = SOURCE_ROOT; };
@@ -61,6 +63,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6406ED8C2361506500B0A5C9 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				6406ED8D2361507500B0A5C9 /* GetURLOperation.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		CD0146102360FCC000C5DD8C /* Errors */ = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		CD3231D02360F8FC00382992 /* HolaClient */ = {
 			isa = PBXGroup;
 			children = (
+				6406ED8C2361506500B0A5C9 /* Types */,
 				CD0146102360FCC000C5DD8C /* Errors */,
 				CD3231EB2360F93300382992 /* Extensions */,
 				CD3231EE2360F93300382992 /* Services */,
@@ -247,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6406ED8E2361507500B0A5C9 /* GetURLOperation.swift in Sources */,
 				CD0145CC2360FAC800C5DD8C /* NSData+Utils.swift in Sources */,
 				CD0146142360FCEA00C5DD8C /* UnknownError.swift in Sources */,
 				CD01460F2360FC4200C5DD8C /* Hola.swift in Sources */,
