@@ -39,7 +39,7 @@ extension Client {
     func beginSearching() {
         if hasBegunSearching { return }
         hasBegunSearching = true
-        browser.searchForServices(ofType: "_http._tcp", inDomain: "local.")
+        browser.searchForServices(ofType: "_https._tcp", inDomain: "local.")
     }
     
     /**
