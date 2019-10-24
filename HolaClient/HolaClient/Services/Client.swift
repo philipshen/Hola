@@ -29,18 +29,19 @@ class Client: NSObject {
         super.init()
 //        self.browser.delegate = self
         
-        thread.sync {
-            self.browser = NetServiceBrowser()
-            self.browser.delegate = self
-            self.browser.schedule(in: .current, forMode: .default)
-        }
+        self.browser = NetServiceBrowser()
+        self.browser.delegate = self
+//        self.browser.remove(from: .current, forMode: .default)
+//        thread.sync {
+//            self.browser.schedule(in: .current, forMode: .default)
+//        }
         
-        timer.schedule(deadline: .now(), repeating: 1)
-        timer.setEventHandler {
-            let future = Calendar.current.date(byAdding: .second, value: 2, to: Date())!
-            RunLoop.current.run(until: future)
-        }
-        timer.resume()
+//        timer.schedule(deadline: .now(), repeating: 1)
+//        timer.setEventHandler {
+//            let future = Calendar.current.date(byAdding: .second, value: 2, to: Date())!
+//            RunLoop.current.run(until: future)
+//        }
+//        timer.resume()
     }
     
 }
