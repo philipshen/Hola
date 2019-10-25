@@ -63,54 +63,6 @@ extension Client {
     
 }
 
-// MARK: - NetServiceBrowserDelegate
-extension Client: NetServiceBrowserDelegate {
-    
-    /**
-     Connect to the first Hola service found. If none are found, return an error to the callbacks
-     */
-    func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
-        if let currentService = self.service {
-            os_log("Already connected to service \"%@\"; ignoring \"%@\"", currentService.name, service.name)
-        } else {
-            if isHolaService(service) {
-                os_log("Found Hola service \"%@\"", service.name)
-                self.service = service
-                service.delegate = self
-                service.resolve(withTimeout: 10)
-            } else if !moreComing {
-                invokeCallbacks(error: .noHolaServicesFound)
-            }
-        }
-    }
-    
-    func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        if service === self.service {
-            self.service = nil
-        }
-    }
-    
-}
-
-extension Client: NetServiceDelegate {
-    
-    func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
-        // Fail each completion handler
-        let domain = errorDict["NSNetServicesErrorDomain"]!
-        let errorCode = errorDict["NSNetServicesErrorCode"]!
-        invokeCallbacks(error: .failedToResolve(domain: domain, code: errorCode))
-    }
-    
-    func netServiceDidResolveAddress(_ sender: NetService) {
-        guard let url = sender.urlString else {
-            fatalError("Resolved address, but unable to find the service")
-        }
-        
-        invokeCallbacks(url: url)
-    }
-    
-}
-
 // MARK: - Private Utility Methods
 private extension Client {
     
@@ -156,6 +108,55 @@ private extension Client {
             self?.dequeueCallback(id: callbackID)
         }
         timer.resume()
+    }
+    
+}
+
+// MARK: - NetServiceBrowserDelegate
+extension Client: NetServiceBrowserDelegate {
+    
+    /**
+     Connect to the first Hola service found. If none are found, return an error to the callbacks
+     */
+    func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
+        if let currentService = self.service {
+            os_log("Already connected to service \"%@\"; ignoring \"%@\"", currentService.name, service.name)
+        } else {
+            if isHolaService(service) {
+                os_log("Found Hola service \"%@\"", service.name)
+                self.service = service
+                service.delegate = self
+                service.resolve(withTimeout: 10)
+            } else if !moreComing {
+                invokeCallbacks(error: .noHolaServicesFound)
+            }
+        }
+    }
+    
+    func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
+        if service === self.service {
+            self.service = nil
+        }
+    }
+    
+}
+
+// MARK: - NetServiceDelegate
+extension Client: NetServiceDelegate {
+    
+    func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
+        // Fail each completion handler
+        let domain = errorDict[NetService.errorDomain]!
+        let errorCode = errorDict[NetService.errorCode]!
+        invokeCallbacks(error: .failedToResolve(domain: domain, code: errorCode))
+    }
+    
+    func netServiceDidResolveAddress(_ sender: NetService) {
+        guard let url = sender.urlString else {
+            fatalError("Resolved address, but unable to find the service")
+        }
+        
+        invokeCallbacks(url: url)
     }
     
 }
