@@ -15,18 +15,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZVv-uI-Fc7">
-                                <rect key="frame" x="184" y="438" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="coa-VM-Y84">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBX-tY-YVT">
+                                <rect key="frame" x="123.5" y="438" width="167" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IiC-Rb-KA2">
+                                        <rect key="frame" x="0.0" y="0.0" width="167" height="30"/>
+                                        <state key="normal" title="Send datausa.io request"/>
+                                        <connections>
+                                            <action selector="sendDataUSARequestPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="njQ-np-S2d"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connecting" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RVA-Cp-6oI">
+                                <rect key="frame" x="160" y="817.5" width="94.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rpa-8J-spq">
+                                <rect key="frame" x="188.5" y="779.5" width="37" height="30"/>
+                                <state key="normal" title="Retry"/>
+                                <connections>
+                                    <action selector="retryButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bvb-jW-fPr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="ZVv-uI-Fc7" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="59z-Sd-jRr"/>
-                            <constraint firstItem="ZVv-uI-Fc7" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="9Zr-wg-nC0"/>
+                            <constraint firstItem="RVA-Cp-6oI" firstAttribute="top" secondItem="rpa-8J-spq" secondAttribute="bottom" constant="8" id="0nD-GH-UQH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RVA-Cp-6oI" secondAttribute="trailing" constant="24" id="6zE-kn-w5M"/>
+                            <constraint firstItem="coa-VM-Y84" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="JEy-7h-xdV"/>
+                            <constraint firstItem="coa-VM-Y84" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="OqP-dj-sc1"/>
+                            <constraint firstItem="KBX-tY-YVT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Whg-qX-ftK"/>
+                            <constraint firstItem="KBX-tY-YVT" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="fqf-XX-hqs"/>
+                            <constraint firstItem="RVA-Cp-6oI" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="iq2-sc-aNf"/>
+                            <constraint firstItem="rpa-8J-spq" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="mni-6Y-KVY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="RVA-Cp-6oI" secondAttribute="bottom" constant="24" id="ywe-dG-T5N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="coa-VM-Y84" id="c8F-gW-kwu"/>
+                        <outlet property="retryButton" destination="rpa-8J-spq" id="MuA-qu-R47"/>
+                        <outlet property="stackView" destination="KBX-tY-YVT" id="dLH-3q-5Cw"/>
+                        <outlet property="statusLabel" destination="RVA-Cp-6oI" id="iM4-ob-IGQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

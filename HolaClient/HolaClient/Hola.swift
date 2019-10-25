@@ -17,7 +17,7 @@ public class Hola {
      
      - Returns:
      */
-    public static func getURL(timeout: Double = Hola.defaultTimeout) -> String {
+    public static func getURL(timeout: Double = Hola.defaultTimeout) throws -> String {
         let group = DispatchGroup()
         
         var url: String?
@@ -36,7 +36,7 @@ public class Hola {
         if let url = url {
             return url
         } else {
-            fatalError("Failed to retrieve URL: \(error?.localizedDescription ?? "Unknown error")")
+            throw error!
         }
     }
     
