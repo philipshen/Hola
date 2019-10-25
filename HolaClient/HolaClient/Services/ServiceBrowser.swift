@@ -17,11 +17,11 @@ import dnssd
  */
 class ServiceBrowser {
     
+    var delegate: ServiceBrowserDelegate?
+    
     private var serviceRef: DNSServiceRef?
     private var socket: CFSocket?
     private var source: CFRunLoopSource?
-    
-    var delegate: ServiceBrowserDelegate?
     
     // Using a DispatchSourceTimer to keep this thread's runloop going... :(
     private lazy var thread = DispatchQueue.global(qos: .background)
@@ -29,8 +29,7 @@ class ServiceBrowser {
         let timer = DispatchSource.makeTimerSource(flags: [], queue: thread)
         timer.schedule(deadline: .now(), repeating: 1)
         timer.setEventHandler {
-            let date = Calendar.current.date(byAdding: .second, value: 1, to: Date())!
-            RunLoop.current.run(until: date)
+            RunLoop.current.run(until: Date().adding(seconds: 1))
         }
         return timer
     }()
@@ -58,10 +57,10 @@ class ServiceBrowser {
     }
     
     func stop() {
-        assert(serviceRef != nil, "Browser already stopped")
-        CFRunLoopSourceInvalidate(source)
-        CFSocketInvalidate(socket)
-        DNSServiceRefDeallocate(serviceRef)
+        assert(self.serviceRef != nil, "Browser already stopped")
+        CFRunLoopSourceInvalidate(self.source)
+        CFSocketInvalidate(self.socket)
+        DNSServiceRefDeallocate(self.serviceRef)
     }
     
     // MARK: - Private Methods
@@ -91,7 +90,7 @@ class ServiceBrowser {
     }
     
     // MARK: Static Callbacks
-    private static let browseCallback: DNSServiceBrowseReply = { sdRef, flags, interfaceIndex, errorCode, name, regtype, domain, context in
+    private static let browseCallback: DNSServiceBrowseReply = { _, flags, _, errorCode, name, regtype, domain, context in
         let browser: ServiceBrowser = Unmanaged.fromOpaque(context!).takeUnretainedValue()
         guard errorCode == kDNSServiceErr_NoError else {
             return browser.didNotSearch(error: Int(errorCode))
@@ -110,7 +109,7 @@ class ServiceBrowser {
         }
     }
     
-    private static let processResult: CFSocketCallBack = { s, type, address, data, info in
+    private static let processResult: CFSocketCallBack = { _,_,_,_,info in
         let browser: ServiceBrowser = Unmanaged.fromOpaque(info!).takeUnretainedValue()
         browser.processResult()
     }
