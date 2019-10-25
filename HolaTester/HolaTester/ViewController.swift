@@ -46,7 +46,8 @@ class ViewController: UIViewController {
     
     @IBAction func sendDataUSARequestPressed(_ sender: Any) {
         let request = HTTPRequest(
-            path: "/api/data?drilldowns=Nation&measures=Population",
+//            path: "/api/data?drilldowns=Nation&measures=Population",
+            path: "",
             method: .get
         )
         

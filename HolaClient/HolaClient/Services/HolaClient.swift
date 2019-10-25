@@ -16,14 +16,23 @@ class HolaClient: NSObject {
     static let shared = HolaClient()
     
     private var service: NetService?
-    private var hasBegunSearching = false
+    private lazy var hasBegunSearching = false
     private lazy var callbacks = [UUID:Callback]()
     private lazy var callbackThread = DispatchQueue.global(qos: .background)
     
-    private let browser: ServiceBrowser
+    // Socket streams
+    private var inputStream: InputStream?
+    private var outputStream: OutputStream?
     
-    private init(browser: ServiceBrowser = ServiceBrowser()) {
+    private let browser: ServiceBrowser
+    private let socketManager: ClientSocketManager
+    
+    private init(
+        browser: ServiceBrowser = ServiceBrowser(),
+        socketManager: ClientSocketManager = ClientSocketManager()
+    ) {
         self.browser = browser
+        self.socketManager = socketManager
         super.init()
         self.browser.delegate = self
     }
@@ -39,7 +48,7 @@ extension HolaClient {
     func beginSearching() {
         if hasBegunSearching { return }
         hasBegunSearching = true
-        browser.searchForServices(ofType: "_https._tcp", inDomain: "local.")
+        browser.searchForServices(ofType: "_http._tcp", inDomain: "local.")
     }
     
     /**

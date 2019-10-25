@@ -24,7 +24,7 @@ class HolaServer: NSObject {
     
     convenience init(name: String? = nil, logService: LogService? = nil) {
         let name = name ?? "hola_\(Int.random(in: 1000..<9999))"
-        let service = NetService(domain: "local.", type: "_https._tcp.", name: name, port: 0)
+        let service = NetService(domain: "local.", type: "_http._tcp.", name: name, port: 0)
         self.init(service: service, logService: logService)
     }
     
@@ -92,8 +92,8 @@ private extension HolaServer {
     }
     
     func getErrorMessage(_ errorDict: [String:NSNumber]) -> String {
-        let domain = errorDict["NSNetServicesErrorDomain"]!
-        let errorCode = errorDict["NSNetServicesErrorCode"]!
+        let domain = errorDict[NetService.errorDomain]!
+        let errorCode = errorDict[NetService.errorCode]!
         return "Failed with domain: \(domain) and error code: \(errorCode)"
     }
     
