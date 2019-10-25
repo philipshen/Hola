@@ -15,14 +15,13 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        Hola.getURLAsync { url, error in
-            print(url)
-            print(error)
-        }
-//        DispatchQueue.global(qos: .background).async {
-//            let url = Hola.getURL()
+//        Hola.getURLAsync { url, error in
 //            print(url)
+//            print(error)
 //        }
+        
+        let url = Hola.getURL()
+        print(url)
     }
 
 }

@@ -11,7 +11,7 @@ import Foundation
 import dnssd
 
 /**
- Custom implementation of the NetServiceBrowser that runs completely in the background. It includes a subset of Apple's NetServiceBrowser API.
+ Custom implementation of the NetServiceBrowser that runs even when the main thread is blocked. It includes a subset of Apple's NetServiceBrowser API.
  
  Shoutout to Bouke on Github! This implementation would have been a huge pain if he hadn't done it first.
  */
@@ -23,7 +23,21 @@ class ServiceBrowser {
     
     var delegate: ServiceBrowserDelegate?
     
-    init() {}
+    // Using a DispatchSourceTimer to keep this thread's runloop going... :(
+    private lazy var thread = DispatchQueue.global(qos: .background)
+    private lazy var timer: DispatchSourceTimer = {
+        let timer = DispatchSource.makeTimerSource(flags: [], queue: thread)
+        timer.schedule(deadline: .now(), repeating: 1)
+        timer.setEventHandler {
+            let date = Calendar.current.date(byAdding: .second, value: 1, to: Date())!
+            RunLoop.current.run(until: date)
+        }
+        return timer
+    }()
+    
+    init() {
+        timer.resume()
+    }
     
     // MARK: - API
     func searchForServices(ofType type: String, inDomain domain: String) {
@@ -31,10 +45,15 @@ class ServiceBrowser {
             return didNotSearch(error: .activityInProgress)
         }
         
-        browse {
-            DNSServiceBrowse(&serviceRef, 0, 0, type, domain,
-                             ServiceBrowser.browseCallback,
-                             Unmanaged.passUnretained(self).toOpaque())
+        thread.async {
+            let error = DNSServiceBrowse(&self.serviceRef, 0, 0, type, domain,
+                                         ServiceBrowser.browseCallback,
+                                         Unmanaged.passUnretained(self).toOpaque())
+            guard error == 0 else {
+                return self.didNotSearch(error: Int(error))
+            }
+            
+            self.start()
         }
     }
     
@@ -46,12 +65,6 @@ class ServiceBrowser {
     }
     
     // MARK: - Private Methods
-    private func browse(setup: () -> DNSServiceErrorType) {
-        let error = setup()
-        guard error == 0 else { return didNotSearch(error: Int(error)) }
-        start()
-    }
-    
     private func start() {
         if serviceRef == nil {
             fatalError("Attempted to start browsing, but service ref has not been initialized")
