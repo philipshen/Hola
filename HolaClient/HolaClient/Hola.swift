@@ -23,7 +23,7 @@ public class Hola {
         var url: String?
         var error: Error?
         
-        Client.shared.beginSearching()
+        HolaClient.shared.beginSearching()
         
         group.enter()
         Hola.getURLAsync(timeout: timeout) { fetchedUrl, fetchedError in
@@ -41,8 +41,8 @@ public class Hola {
     }
     
     public static func getURLAsync(timeout: Double = Hola.defaultTimeout, completion: @escaping (String?, Error?) -> Void) {
-        Client.shared.beginSearching()
-        Client.shared.getURL(timeout: timeout, completion: completion)
+        HolaClient.shared.beginSearching()
+        HolaClient.shared.getURL(timeout: timeout, completion: completion)
     }
     
 }

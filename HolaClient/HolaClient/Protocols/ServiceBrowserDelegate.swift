@@ -10,14 +10,14 @@ import Foundation
 
 protocol ServiceBrowserDelegate: class {
     
-    func netServiceBrowser(_ browser: ServiceBrowser,
+    func serviceBrowser(_ browser: ServiceBrowser,
                            didNotSearch errorDict: [String:NSNumber])
     
-    func netServiceBrowser(_ browser: ServiceBrowser,
+    func serviceBrowser(_ browser: ServiceBrowser,
                            didRemove service: NetService,
                            moreComing: Bool)
     
-    func netServiceBrowser(_ browser: ServiceBrowser,
+    func serviceBrowser(_ browser: ServiceBrowser,
                            didFind service: NetService,
                            moreComing: Bool)
     

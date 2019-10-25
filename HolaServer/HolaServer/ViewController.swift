@@ -15,7 +15,7 @@ class ViewController: NSViewController {
     @IBOutlet var textView: NSTextView!
     
     lazy var logService = LogService(delegate: self)
-    lazy var server = Server(logService: logService)
+    lazy var server = HolaServer(logService: logService)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -104,11 +104,11 @@ class ServiceBrowser {
     
     // MARK: Delegated Methods
     private func didFind(service: NetService, moreComing: Bool) {
-        delegate?.netServiceBrowser(self, didFind: service, moreComing: moreComing)
+        delegate?.serviceBrowser(self, didFind: service, moreComing: moreComing)
     }
     
     private func didRemove(service: NetService, moreComing: Bool) {
-        delegate?.netServiceBrowser(self, didRemove: service, moreComing: moreComing)
+        delegate?.serviceBrowser(self, didRemove: service, moreComing: moreComing)
     }
     
     private func didNotSearch(error: NetService.ErrorCode) {
@@ -116,7 +116,7 @@ class ServiceBrowser {
     }
     
     private func didNotSearch(error: Int) {
-        delegate?.netServiceBrowser(self, didNotSearch: [
+        delegate?.serviceBrowser(self, didNotSearch: [
             NetService.errorDomain: NSNumber(value: 10),
             NetService.errorCode: NSNumber(value: error)
         ])

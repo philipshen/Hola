@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Server: NSObject {
+class HolaServer: NSObject {
     
     // Dependencies
     private let service: NetService
@@ -35,7 +35,7 @@ class Server: NSObject {
     
 }
 
-extension Server: NetServiceDelegate {
+extension HolaServer: NetServiceDelegate {
     
     func netService(_ sender: NetService, didNotPublish errorDict: [String:NSNumber]) {
         log(.error(.publishing, "Failed to publish service: \(getErrorMessage(errorDict))"))
@@ -52,7 +52,7 @@ extension Server: NetServiceDelegate {
 }
 
 // MARK: - Stream Delegate
-extension Server: StreamDelegate {
+extension HolaServer: StreamDelegate {
     
     func stream(_ aStream: Stream, handle eventCode: Stream.Event) {
         if eventCode.contains(.hasBytesAvailable) {
@@ -85,7 +85,7 @@ extension Server: StreamDelegate {
 }
 
 // MARK: - Private Utility Methods
-private extension Server {
+private extension HolaServer {
     
     func log(_ log: Log) {
         logService?.log(log)

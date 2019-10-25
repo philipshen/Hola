@@ -9,20 +9,20 @@
 import Foundation
 import os.log
 
-class Client: NSObject {
+class HolaClient: NSObject {
     
     typealias Callback = (String?, Error?) -> Void
     
-    static let shared = Client()
+    static let shared = HolaClient()
     
     private var service: NetService?
     private var hasBegunSearching = false
     private lazy var callbacks = [UUID:Callback]()
     private lazy var callbackThread = DispatchQueue.global(qos: .background)
     
-    private let browser: NetServiceBrowser
+    private let browser: ServiceBrowser
     
-    private init(browser: NetServiceBrowser = NetServiceBrowser()) {
+    private init(browser: ServiceBrowser = ServiceBrowser()) {
         self.browser = browser
         super.init()
         self.browser.delegate = self
@@ -31,7 +31,7 @@ class Client: NSObject {
 }
 
 // MARK: - API
-extension Client {
+extension HolaClient {
     
     /**
      Searches for Hola services. This must execute on the main thread, making it very easy to lead to deadlocks.
@@ -64,7 +64,7 @@ extension Client {
 }
 
 // MARK: - Private Utility Methods
-private extension Client {
+private extension HolaClient {
     
     func isHolaService(_ service: NetService) -> Bool {
         return service.name.hasPrefix("hola_")
@@ -113,12 +113,22 @@ private extension Client {
 }
 
 // MARK: - NetServiceBrowserDelegate
-extension Client: NetServiceBrowserDelegate {
+extension HolaClient: ServiceBrowserDelegate {
+    
+    func serviceBrowser(_ browser: ServiceBrowser, didNotSearch errorDict: [String : NSNumber]) {
+        invokeCallbacks(error: .failedToSearch(errorDict: errorDict))
+    }
     
     /**
      Connect to the first Hola service found. If none are found, return an error to the callbacks
      */
-    func netServiceBrowser(_ browser: NetServiceBrowser, didFind service: NetService, moreComing: Bool) {
+    func serviceBrowser(_ browser: ServiceBrowser, didRemove service: NetService, moreComing: Bool) {
+        if service === self.service {
+            self.service = nil
+        }
+    }
+    
+    func serviceBrowser(_ browser: ServiceBrowser, didFind service: NetService, moreComing: Bool) {
         if let currentService = self.service {
             os_log("Already connected to service \"%@\"; ignoring \"%@\"", currentService.name, service.name)
         } else {
@@ -127,28 +137,20 @@ extension Client: NetServiceBrowserDelegate {
                 self.service = service
                 service.delegate = self
                 service.resolve(withTimeout: 10)
+                browser.stop()
             } else if !moreComing {
                 invokeCallbacks(error: .noHolaServicesFound)
             }
         }
     }
     
-    func netServiceBrowser(_ browser: NetServiceBrowser, didRemove service: NetService, moreComing: Bool) {
-        if service === self.service {
-            self.service = nil
-        }
-    }
-    
 }
 
 // MARK: - NetServiceDelegate
-extension Client: NetServiceDelegate {
+extension HolaClient: NetServiceDelegate {
     
     func netService(_ sender: NetService, didNotResolve errorDict: [String:NSNumber]) {
-        // Fail each completion handler
-        let domain = errorDict[NetService.errorDomain]!
-        let errorCode = errorDict[NetService.errorCode]!
-        invokeCallbacks(error: .failedToResolve(domain: domain, code: errorCode))
+        invokeCallbacks(error: .failedToResolve(errorDict: errorDict))
     }
     
     func netServiceDidResolveAddress(_ sender: NetService) {
