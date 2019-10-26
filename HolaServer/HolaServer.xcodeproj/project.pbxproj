@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		647318952363CA6500AE7BEA /* ServerIdentifierManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 647318942363CA6500AE7BEA /* ServerIdentifierManager.swift */; };
+		6473189F2363E62D00AE7BEA /* ServerSocketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6473189E2363E62D00AE7BEA /* ServerSocketManager.swift */; };
 		648F1E26235E9C4C00AC77E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E25235E9C4C00AC77E9 /* AppDelegate.swift */; };
 		648F1E28235E9C4C00AC77E9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 648F1E27235E9C4C00AC77E9 /* ViewController.swift */; };
 		648F1E2A235E9C4C00AC77E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 648F1E29235E9C4C00AC77E9 /* Assets.xcassets */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		647318942363CA6500AE7BEA /* ServerIdentifierManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerIdentifierManager.swift; sourceTree = "<group>"; };
+		6473189E2363E62D00AE7BEA /* ServerSocketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerSocketManager.swift; sourceTree = "<group>"; };
 		648F1E22235E9C4C00AC77E9 /* HolaServer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HolaServer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		648F1E25235E9C4C00AC77E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		648F1E27235E9C4C00AC77E9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				648F1E44235E9F6900AC77E9 /* HolaServer.swift */,
 				648F1E46235EA09600AC77E9 /* LogService.swift */,
+				6473189E2363E62D00AE7BEA /* ServerSocketManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				648F1E47235EA09600AC77E9 /* LogService.swift in Sources */,
 				648F1E50235EA8A100AC77E9 /* Log.swift in Sources */,
 				648F1E26235E9C4C00AC77E9 /* AppDelegate.swift in Sources */,
+				6473189F2363E62D00AE7BEA /* ServerSocketManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

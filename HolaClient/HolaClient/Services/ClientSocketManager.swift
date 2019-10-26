@@ -49,7 +49,8 @@ class ClientSocketManager: NSObject {
         }
         
         self.service = service
-        let success = service.getInputStream(&inputStream, outputStream: &outputStream)
+        let success = service.getInputStream(&inputStream,
+                                             outputStream: &outputStream)
             
         if success {
             open(stream: inputStream)

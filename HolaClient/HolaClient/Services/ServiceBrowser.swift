@@ -24,6 +24,7 @@ class ServiceBrowser {
     private var source: CFRunLoopSource?
     
     // Using a DispatchSourceTimer to keep this thread's runloop going... :(
+    // TODO: Find a better solution
     private lazy var thread = DispatchQueue.global(qos: .background)
     private lazy var timer: DispatchSourceTimer = {
         let timer = DispatchSource.makeTimerSource(flags: [], queue: thread)
@@ -81,7 +82,6 @@ class ServiceBrowser {
         CFSocketSetSocketFlags(socket, socketFlags)
         
         source = CFSocketCreateRunLoopSource(nil, socket, 0)
-        // DO THIS IN THE BACKGROUND BY USING A BACKGROUND RUN LOOP??
         CFRunLoopAddSource(CFRunLoopGetCurrent(), source, CFRunLoopMode.commonModes)
     }
     
