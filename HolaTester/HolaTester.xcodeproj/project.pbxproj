@@ -15,6 +15,7 @@
 		6406ED5F23611BCC00B0A5C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6406ED5D23611BCC00B0A5C9 /* LaunchScreen.storyboard */; };
 		6406ED6A23611BCD00B0A5C9 /* HolaTesterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406ED6923611BCD00B0A5C9 /* HolaTesterTests.swift */; };
 		6406ED7523611BCD00B0A5C9 /* HolaTesterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6406ED7423611BCD00B0A5C9 /* HolaTesterUITests.swift */; };
+		647318992363CE8800AE7BEA /* HolaClient.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 647318982363CE8800AE7BEA /* HolaClient.framework */; };
 		CD01463D23639F5300C5DD8C /* HTTPRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01463C23639F5300C5DD8C /* HTTPRequestService.swift */; };
 		CD01464023639F6C00C5DD8C /* HTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01463F23639F6C00C5DD8C /* HTTPRequest.swift */; };
 		CD01464223639FF500C5DD8C /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD01464123639FF500C5DD8C /* HTTPMethod.swift */; };
@@ -54,6 +55,7 @@
 		6406ED7023611BCD00B0A5C9 /* HolaTesterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HolaTesterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6406ED7423611BCD00B0A5C9 /* HolaTesterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HolaTesterUITests.swift; sourceTree = "<group>"; };
 		6406ED7623611BCD00B0A5C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		647318982363CE8800AE7BEA /* HolaClient.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HolaClient.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD01463C23639F5300C5DD8C /* HTTPRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequestService.swift; sourceTree = "<group>"; };
 		CD01463F23639F6C00C5DD8C /* HTTPRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPRequest.swift; sourceTree = "<group>"; };
 		CD01464123639FF500C5DD8C /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				647318992363CE8800AE7BEA /* HolaClient.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +96,7 @@
 				6406ED6823611BCD00B0A5C9 /* HolaTesterTests */,
 				6406ED7323611BCD00B0A5C9 /* HolaTesterUITests */,
 				6406ED5023611BCB00B0A5C9 /* Products */,
+				647318972363CE8800AE7BEA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +151,14 @@
 				6406ED6023611BCC00B0A5C9 /* Info.plist */,
 			);
 			path = Supporting;
+			sourceTree = "<group>";
+		};
+		647318972363CE8800AE7BEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				647318982363CE8800AE7BEA /* HolaClient.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		CD01463B23639F4200C5DD8C /* Services */ = {

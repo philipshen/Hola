@@ -12,7 +12,8 @@ public enum HolaClientError: LocalizedError {
     
     case failedToResolve(domain: NSNumber, code: NSNumber)
     case failedToSearchForServices(domain: NSNumber, code: NSNumber)
-    case noHolaServicesFound
+    case serverIDNotSet
+    case noHolaServicesFound(id: String)
     case getURLTimeout
     
     static func failedToResolve(errorDict: [String:NSNumber]) -> HolaClientError {
@@ -37,8 +38,10 @@ public enum HolaClientError: LocalizedError {
             return "Failed to resolve service (domain: \(domain), errorCode: \(code))"
         case .failedToSearchForServices(let domain, let code):
             return "Failed to search for services (domain: \(domain), errorCode: \(code))"
-        case .noHolaServicesFound:
-            return "No Hola services found."
+        case .serverIDNotSet:
+            return "Environment variable \"holaServerID\" must be set."
+        case .noHolaServicesFound(let id):
+            return "No Hola services found with id \"\(id)\"."
         case .getURLTimeout:
             return "Timed out."
         }

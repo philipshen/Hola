@@ -16,9 +16,12 @@ class HolaClient: NSObject {
     static let shared = HolaClient()
     
     private var service: NetService?
+    private var holaServerID: String!
     private lazy var hasBegunSearching = false
     private lazy var callbacks = [UUID:Callback]()
     private lazy var callbackThread = DispatchQueue.global(qos: .background)
+    
+    private var expectedServiceName: String { "hola_\(holaServerID!)" }
     
     // Socket streams
     private var inputStream: InputStream?
@@ -45,8 +48,9 @@ extension HolaClient {
     /**
      Searches for Hola services. This must execute on the main thread, making it very easy to lead to deadlocks.
      */
-    func beginSearching() {
+    func beginSearching(serverID: String) {
         if hasBegunSearching { return }
+        holaServerID = serverID
         hasBegunSearching = true
         browser.searchForServices(ofType: "_http._tcp", inDomain: "local.")
     }
@@ -74,10 +78,6 @@ extension HolaClient {
 
 // MARK: - Private Utility Methods
 private extension HolaClient {
-    
-    func isHolaService(_ service: NetService) -> Bool {
-        return service.name.hasPrefix("hola_")
-    }
     
     func invokeCallbacks(url: String? = nil, error: HolaClientError? = nil) {
         guard url != nil || error != nil else {
@@ -141,14 +141,14 @@ extension HolaClient: ServiceBrowserDelegate {
         if let currentService = self.service {
             os_log("Already connected to service \"%@\"; ignoring \"%@\"", currentService.name, service.name)
         } else {
-            if isHolaService(service) {
+            if service.name == expectedServiceName {
                 os_log("Found Hola service \"%@\"", service.name)
                 self.service = service
                 service.delegate = self
                 service.resolve(withTimeout: 10)
                 browser.stop()
             } else if !moreComing {
-                invokeCallbacks(error: .noHolaServicesFound)
+                invokeCallbacks(error: .noHolaServicesFound(id: holaServerID))
             }
         }
     }

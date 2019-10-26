@@ -23,10 +23,10 @@ public class Hola {
         var url: String?
         var error: Error?
         
-        HolaClient.shared.beginSearching()
+        HolaClient.shared.beginSearching(serverID: try getServerID())
         
         group.enter()
-        Hola.getURLAsync(timeout: timeout) { fetchedUrl, fetchedError in
+        getURLAsync(timeout: timeout) { fetchedUrl, fetchedError in
             url = fetchedUrl
             error = fetchedError
             group.leave()
@@ -41,8 +41,27 @@ public class Hola {
     }
     
     public static func getURLAsync(timeout: Double = Hola.defaultTimeout, completion: @escaping (String?, Error?) -> Void) {
-        HolaClient.shared.beginSearching()
-        HolaClient.shared.getURL(timeout: timeout, completion: completion)
+        do {
+            let serverID = try getServerID()
+            HolaClient.shared.beginSearching(serverID: serverID)
+            HolaClient.shared.getURL(timeout: timeout, completion: completion)
+        }
+        catch let error {
+            completion(nil, error)
+        }
+    }
+    
+}
+
+// MARK: - Helper Methods
+private extension Hola {
+    
+    static func getServerID() throws -> String {
+        guard let id = ProcessInfo.processInfo.environment["holaServerIdentifier"] else {
+            throw HolaClientError.serverIDNotSet
+        }
+        
+        return id
     }
     
 }
