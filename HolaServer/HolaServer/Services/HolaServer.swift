@@ -35,6 +35,7 @@ class HolaServer: NSObject {
     
 }
 
+// MARK: - NetServiceDelegate
 extension HolaServer: NetServiceDelegate {
     
     func netService(_ sender: NetService, didNotPublish errorDict: [String:NSNumber]) {

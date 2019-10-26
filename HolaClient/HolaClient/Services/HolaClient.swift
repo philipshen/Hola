@@ -13,7 +13,7 @@ class HolaClient: NSObject {
     
     typealias Callback = (String?, Error?) -> Void
     
-    static let shared = HolaClient()
+    var delegate: HolaClientDelegate?
     
     private var service: NetService?
     private var holaServerID: String!
@@ -23,19 +23,10 @@ class HolaClient: NSObject {
     
     private var expectedServiceName: String { "hola_\(holaServerID!)" }
     
-    // Socket streams
-    private var inputStream: InputStream?
-    private var outputStream: OutputStream?
-    
     private let browser: ServiceBrowser
-    private let socketManager: ClientSocketManager
     
-    private init(
-        browser: ServiceBrowser = ServiceBrowser(),
-        socketManager: ClientSocketManager = ClientSocketManager()
-    ) {
+    init(browser: ServiceBrowser = ServiceBrowser()) {
         self.browser = browser
-        self.socketManager = socketManager
         super.init()
         self.browser.delegate = self
     }
@@ -146,6 +137,7 @@ extension HolaClient: ServiceBrowserDelegate {
                 self.service = service
                 service.delegate = self
                 service.resolve(withTimeout: 10)
+                delegate?.holaClient(self, didFind: service)
                 browser.stop()
             } else if !moreComing {
                 invokeCallbacks(error: .noHolaServicesFound(id: holaServerID))
