@@ -23,7 +23,7 @@ class HolaServer: NSObject {
     }
     
     convenience init(name: String? = nil, logService: LogService? = nil) {
-        let name = name ?? "hola_\(Int.random(in: 1000..<9999))"
+        let name = name ?? "hola_\(getServerIdentifier())"
         let service = NetService(domain: "local.", type: "_http._tcp.", name: name, port: 0)
         self.init(service: service, logService: logService)
     }

@@ -25,6 +25,11 @@ class ViewController: NSViewController {
         
         server.publish()
     }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.title = "Hola: \(getServerIdentifier())"
+    }
 
 }
 
